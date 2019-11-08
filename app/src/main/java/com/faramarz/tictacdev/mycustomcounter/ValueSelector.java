@@ -45,6 +45,7 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
     int minusColor;
     int borderThickness;
     int borderRadius;
+    int gapValue;
 
     public ValueSelector(Context context) {
         super(context);
@@ -64,6 +65,7 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         setCustomMinValue(attrs);
         setStartValue(attrs);
         updateInterval(attrs);
+        setGapValue(attrs);
     }
 
     public ValueSelector(Context context, AttributeSet attrs, int defStyle) {
@@ -79,7 +81,7 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         setCustomMinValue(attrs);
         setStartValue(attrs);
         updateInterval(attrs);
-
+        setGapValue(attrs);
     }
 
 
@@ -196,6 +198,20 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         ta.recycle();
     }
 
+    private void setGapValue(AttributeSet set) {
+        //mvale = startvalue
+        if (set == null) {
+            return;
+        }
+        ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
+
+        ValueSelectorSavedState ss = new ValueSelectorSavedState(super.onSaveInstanceState());
+        gapValue = ta.getInt(R.styleable.ValueSelector_gapValue, 0);
+
+        ta.recycle();
+    }
+
+
     public int getMinValue() {
         return minValue;
     }
@@ -259,15 +275,13 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
     }
 
     private void decrementValue() {
-
         int value = getValue();
-        setValue(value - 1);
+            setValue(value - gapValue);
     }
 
     private void incrementValue() {
-
         int value = getValue();
-        setValue(value + 1);
+            setValue(value + gapValue);
     }
 
     @Override

@@ -23,8 +23,10 @@
         app:minus_btn_color="#1E88E5"
         app:plus_btn_color="#D81B60"
         app:startValue="5"
-        app:updateInterval="500"
-        app:value_color="#DB296A" />
+        app:updateInterval="400"
+        app:value_color="#DB296A"
+        app:gapValue="1"
+        />
 
 
 </LinearLayout>
