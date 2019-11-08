@@ -3,8 +3,11 @@
 
 
     <declare-styleable name="ValueSelector">
+
         <attr name="value_color" format="color" />
         <attr name="border_color" format="color" />
+        <attr name="plus_btn_color" format="color" />
+        <attr name="minus_btn_color" format="color" />
 
         <attr name="minValue" format="integer" />
         <attr name="maxValue" format="integer" />

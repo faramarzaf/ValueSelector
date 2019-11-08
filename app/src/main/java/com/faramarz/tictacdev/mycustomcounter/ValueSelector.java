@@ -1,8 +1,15 @@
 package com.faramarz.tictacdev.mycustomcounter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.LightingColorFilter;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Handler;
 import android.os.Parcel;
@@ -10,18 +17,21 @@ import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.view.ContextThemeWrapper;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
+import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
+
 
 /**
-
  * The ValueSelector helps to get value easily
-
- * @version 1.0
-
+ *
  * @author Faramarz Afzali
-
+ * @version 1.0
  */
 
 
@@ -30,9 +40,8 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
     TypedArray ta;
     View rootView;
     TextView valueText;
-    View buttonPlus;
-    View buttonMinus;
     LinearLayout parentView;
+    ImageView plusImg, minusImg;
     GradientDrawable gd = new GradientDrawable();
 
     private boolean isPlusButtonPressed = false;
@@ -43,6 +52,11 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
     int minValue = Integer.MIN_VALUE;
     int maxValue = Integer.MAX_VALUE;
     int valueColor;
+
+    int plusColor;
+    int minusColor;
+
+
     int borderThickness;
     int borderRadius;
 
@@ -58,6 +72,8 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         setCustomBorderColor(attrs);
         setCustomBorderThickness(attrs);
         setCustomBorderRadius(attrs);
+        setCustomPlusColor(attrs);
+        setCustomMinusColor(attrs);
     }
 
     public ValueSelector(Context context, AttributeSet attrs, int defStyle) {
@@ -67,6 +83,8 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         setCustomBorderColor(attrs);
         setCustomBorderThickness(attrs);
         setCustomBorderRadius(attrs);
+        setCustomPlusColor(attrs);
+        setCustomMinusColor(attrs);
     }
 
 
@@ -121,6 +139,27 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
     }
 
 
+    private void setCustomPlusColor(AttributeSet set) {
+        if (set == null) {
+            return;
+        }
+        ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
+        plusColor = ta.getColor(R.styleable.ValueSelector_plus_btn_color, Color.BLACK);
+        plusImg.setColorFilter((plusColor));
+        ta.recycle();
+    }
+
+    private void setCustomMinusColor(AttributeSet set) {
+        if (set == null) {
+            return;
+        }
+        ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
+        minusColor = ta.getColor(R.styleable.ValueSelector_minus_btn_color, Color.BLACK);
+        minusImg.setColorFilter((minusColor));
+        ta.recycle();
+    }
+
+
     public int getMinValue() {
         return minValue;
     }
@@ -137,21 +176,21 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         this.maxValue = maxValue;
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private void init(Context context) {
         setSaveEnabled(true);
-
         rootView = inflate(context, R.layout.value_selector, this);
         valueText = rootView.findViewById(R.id.value_number);
-        buttonMinus = rootView.findViewById(R.id.btn_minus);
-        buttonPlus = rootView.findViewById(R.id.btn_plus);
+        minusImg = rootView.findViewById(R.id.btn_minus);
         parentView = rootView.findViewById(R.id.parentView);
+        plusImg = rootView.findViewById(R.id.btn_plus);
         handler = new Handler();
-        buttonPlus.setOnClickListener(this);
-        buttonMinus.setOnClickListener(this);
-        buttonPlus.setOnLongClickListener(this);
-        buttonMinus.setOnLongClickListener(this);
-        buttonMinus.setOnTouchListener(this);
-        buttonPlus.setOnTouchListener(this);
+        plusImg.setOnClickListener(this);
+        minusImg.setOnClickListener(this);
+        plusImg.setOnLongClickListener(this);
+        minusImg.setOnLongClickListener(this);
+        minusImg.setOnTouchListener(this);
+        plusImg.setOnTouchListener(this);
     }
 
     public int getValue() {
@@ -176,9 +215,9 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == buttonMinus.getId()) {
+        if (view.getId() == minusImg.getId()) {
             decrementValue();
-        } else if (view.getId() == buttonPlus.getId()) {
+        } else if (view.getId() == plusImg.getId()) {
             incrementValue();
         }
     }
@@ -206,10 +245,10 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
 
     @Override
     public boolean onLongClick(View view) {
-        if (view.getId() == buttonMinus.getId()) {
+        if (view.getId() == minusImg.getId()) {
             isMinusButtonPressed = true;
             handler.postDelayed(new AutoDecrementer(), TIME_INTERVAL);
-        } else if (view.getId() == buttonPlus.getId()) {
+        } else if (view.getId() == plusImg.getId()) {
             isPlusButtonPressed = true;
             handler.postDelayed(new AutoIncrementer(), TIME_INTERVAL);
         }
