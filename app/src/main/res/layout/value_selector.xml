@@ -5,11 +5,11 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@drawable/bg_selector"
-
     android:gravity="center"
     android:orientation="horizontal">
 
     <LinearLayout
+        android:id="@+id/itemsContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -17,13 +17,15 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/btn_minus"
+            android:id="@+id/btn_plus"
             android:layout_width="@dimen/valueselector_button_wh"
             android:layout_height="@dimen/valueselector_button_wh"
             android:layout_gravity="center"
             android:layout_margin="@dimen/valueselector_margin_left_right"
-            android:src="@drawable/ic_minus"
-            app:srcCompat="@drawable/ic_minus" />
+            android:src="@drawable/ic_plus"
+            app:srcCompat="@drawable/ic_plus"
+
+            />
 
         <TextView
             android:id="@+id/value_number"
@@ -37,15 +39,14 @@
             android:textSize="18sp" />
 
         <ImageView
-            android:id="@+id/btn_plus"
+            android:id="@+id/btn_minus"
             android:layout_width="@dimen/valueselector_button_wh"
             android:layout_height="@dimen/valueselector_button_wh"
             android:layout_gravity="center"
             android:layout_margin="@dimen/valueselector_margin_left_right"
-            android:src="@drawable/ic_plus"
-            app:srcCompat="@drawable/ic_plus"
+            android:src="@drawable/ic_minus"
+            app:srcCompat="@drawable/ic_minus" />
 
-            />
     </LinearLayout>
 
 </LinearLayout>

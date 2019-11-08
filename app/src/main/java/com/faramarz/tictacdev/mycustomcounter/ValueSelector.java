@@ -29,7 +29,7 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
     TypedArray ta;
     View rootView;
     TextView valueText;
-    LinearLayout parentView;
+    LinearLayout parentView, itemsContainer;
     ImageView plusImg, minusImg;
     GradientDrawable gd = new GradientDrawable();
 
@@ -46,6 +46,7 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
     int borderThickness;
     int borderRadius;
     int gapValue;
+    int viewOrientation;
 
     public ValueSelector(Context context) {
         super(context);
@@ -66,6 +67,7 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         setStartValue(attrs);
         updateInterval(attrs);
         setGapValue(attrs);
+        setViewOrientation(attrs);
     }
 
     public ValueSelector(Context context, AttributeSet attrs, int defStyle) {
@@ -82,6 +84,7 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         setStartValue(attrs);
         updateInterval(attrs);
         setGapValue(attrs);
+        setViewOrientation(attrs);
     }
 
 
@@ -199,18 +202,28 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
     }
 
     private void setGapValue(AttributeSet set) {
-        //mvale = startvalue
         if (set == null) {
             return;
         }
         ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
-
-        ValueSelectorSavedState ss = new ValueSelectorSavedState(super.onSaveInstanceState());
         gapValue = ta.getInt(R.styleable.ValueSelector_gapValue, 0);
-
         ta.recycle();
     }
 
+
+    private void setViewOrientation(AttributeSet set) {
+        if (set == null) {
+            return;
+        }
+        ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
+        viewOrientation = ta.getInt(R.styleable.ValueSelector_valueSelectorOrientation, 0);
+        if (viewOrientation == 0) {
+            itemsContainer.setOrientation(HORIZONTAL);
+        } else if (viewOrientation == 1) {
+            itemsContainer.setOrientation(VERTICAL);
+        }
+        ta.recycle();
+    }
 
     public int getMinValue() {
         return minValue;
@@ -236,6 +249,7 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         minusImg = rootView.findViewById(R.id.btn_minus);
         parentView = rootView.findViewById(R.id.parentView);
         plusImg = rootView.findViewById(R.id.btn_plus);
+        itemsContainer = rootView.findViewById(R.id.itemsContainer);
         handler = new Handler();
         plusImg.setOnClickListener(this);
         minusImg.setOnClickListener(this);
@@ -276,12 +290,12 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
 
     private void decrementValue() {
         int value = getValue();
-            setValue(value - gapValue);
+        setValue(value - gapValue);
     }
 
     private void incrementValue() {
         int value = getValue();
-            setValue(value + gapValue);
+        setValue(value + gapValue);
     }
 
     @Override

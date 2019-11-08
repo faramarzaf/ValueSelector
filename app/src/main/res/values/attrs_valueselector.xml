@@ -17,6 +17,13 @@
 
         <attr name="border_thickness" format="integer" />
         <attr name="border_radius" format="integer" />
+        
+
+
+        <attr name="valueSelectorOrientation">
+            <enum name="horizontal" value="0"/>
+                <enum name="vertical" value="1"/>
+        </attr>
 
 
     </declare-styleable>

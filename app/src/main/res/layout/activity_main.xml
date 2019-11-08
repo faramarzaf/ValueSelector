@@ -18,14 +18,15 @@
         app:border_color="#5C96CE"
         app:border_radius="15"
         app:border_thickness="5"
+        app:gapValue="5"
         app:maxValue="100"
         app:minValue="-20"
         app:minus_btn_color="#1E88E5"
         app:plus_btn_color="#D81B60"
         app:startValue="5"
-        app:updateInterval="400"
+        app:updateInterval="200"
         app:value_color="#DB296A"
-        app:gapValue="1"
+        app:valueSelectorOrientation="vertical"
         />
 
 
