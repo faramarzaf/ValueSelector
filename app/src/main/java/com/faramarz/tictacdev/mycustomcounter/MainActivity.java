@@ -22,9 +22,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         valueSelector = new ValueSelector(this);
         valueSelector = findViewById(R.id.value_selector);
-        valueSelector.setMinValue(-100);
-        valueSelector.setMaxValue(100);
-
 
     }
 
