@@ -37,7 +37,7 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
     private boolean isMinusButtonPressed = false;
     private Handler handler;
 
-    private static final int TIME_INTERVAL = 100;
+    private static int TIME_INTERVAL;
     int minValue = Integer.MIN_VALUE;
     int maxValue = Integer.MAX_VALUE;
     int valueColor;
@@ -60,10 +60,10 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         setCustomBorderRadius(attrs);
         setCustomPlusColor(attrs);
         setCustomMinusColor(attrs);
-
         setCustomMaxValue(attrs);
         setCustomMinValue(attrs);
         setStartValue(attrs);
+        updateInterval(attrs);
     }
 
     public ValueSelector(Context context, AttributeSet attrs, int defStyle) {
@@ -75,11 +75,11 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         setCustomBorderRadius(attrs);
         setCustomPlusColor(attrs);
         setCustomMinusColor(attrs);
-
-
         setCustomMaxValue(attrs);
         setCustomMinValue(attrs);
         setStartValue(attrs);
+        updateInterval(attrs);
+
     }
 
 
@@ -181,13 +181,20 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
 
         ValueSelectorSavedState ss = new ValueSelectorSavedState(super.onSaveInstanceState());
-        ss.minValue = this.minValue;
-        ss.maxValue = this.maxValue;
-        ss.currentValue  = ta.getInt(R.styleable.ValueSelector_startValue, 0);
+        ss.currentValue = ta.getInt(R.styleable.ValueSelector_startValue, 0);
         valueText.setText(String.valueOf(ss.currentValue));
         ta.recycle();
     }
 
+
+    private void updateInterval(AttributeSet set) {
+        if (set == null) {
+            return;
+        }
+        ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
+        TIME_INTERVAL = ta.getInt(R.styleable.ValueSelector_updateInterval, 100);
+        ta.recycle();
+    }
 
     public int getMinValue() {
         return minValue;

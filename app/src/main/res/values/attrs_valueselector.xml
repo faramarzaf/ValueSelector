@@ -12,6 +12,7 @@
         <attr name="minValue" format="integer" />
         <attr name="maxValue" format="integer" />
         <attr name="startValue" format="integer" />
+        <attr name="updateInterval" format="integer" />
 
         <attr name="border_thickness" format="integer" />
         <attr name="border_radius" format="integer" />
