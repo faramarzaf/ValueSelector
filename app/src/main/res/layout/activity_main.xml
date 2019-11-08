@@ -23,6 +23,7 @@
         app:value_color="#DB296A"
         app:maxValue="10"
         app:minValue="-20"
+        app:startValue="5"
         />
 
 

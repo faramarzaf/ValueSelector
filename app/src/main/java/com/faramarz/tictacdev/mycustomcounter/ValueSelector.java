@@ -63,6 +63,7 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
 
         setCustomMaxValue(attrs);
         setCustomMinValue(attrs);
+        setStartValue(attrs);
     }
 
     public ValueSelector(Context context, AttributeSet attrs, int defStyle) {
@@ -78,6 +79,7 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
 
         setCustomMaxValue(attrs);
         setCustomMinValue(attrs);
+        setStartValue(attrs);
     }
 
 
@@ -168,6 +170,21 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         }
         ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
         minValue = ta.getInt(R.styleable.ValueSelector_minValue, -10);
+        ta.recycle();
+    }
+
+
+    private void setStartValue(AttributeSet set) {
+        if (set == null) {
+            return;
+        }
+        ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
+
+        ValueSelectorSavedState ss = new ValueSelectorSavedState(super.onSaveInstanceState());
+        ss.minValue = this.minValue;
+        ss.maxValue = this.maxValue;
+        ss.currentValue  = ta.getInt(R.styleable.ValueSelector_startValue, 0);
+        valueText.setText(String.valueOf(ss.currentValue));
         ta.recycle();
     }
 
