@@ -14,6 +14,17 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
+/**
+
+ * The ValueSelector helps to get value easily
+
+ * @version 1.0
+
+ * @author Faramarz Afzali
+
+ */
+
+
 public class ValueSelector extends LinearLayout implements View.OnClickListener, View.OnLongClickListener, View.OnTouchListener {
 
     TypedArray ta;

@@ -13,12 +13,8 @@
         android:layout_width="@dimen/valueselector_button_wh"
         android:layout_height="@dimen/valueselector_button_wh"
         android:layout_gravity="center_vertical"
-        android:layout_marginLeft="@dimen/valueselector_margin_left_right"
-        android:layout_marginTop="@dimen/valueselector_margin_top_bottom"
-        android:layout_marginRight="@dimen/valueselector_margin_left_right"
-        android:layout_marginBottom="@dimen/valueselector_margin_top_bottom"
+        android:layout_margin="@dimen/valueselector_margin_left_right"
         android:src="@drawable/ic_minus"
-
         app:srcCompat="@drawable/ic_minus" />
 
     <TextView
@@ -27,8 +23,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:gravity="center"
-        android:maxWidth="30dp"
-        android:minWidth="24dp"
+        android:maxWidth="70dp"
+        android:minWidth="50dp"
         android:text="0"
         android:textColor="@android:color/black"
         android:textSize="18sp" />
@@ -38,10 +34,7 @@
         android:layout_width="@dimen/valueselector_button_wh"
         android:layout_height="@dimen/valueselector_button_wh"
         android:layout_gravity="center_vertical"
-        android:layout_marginLeft="@dimen/valueselector_margin_left_right"
-        android:layout_marginTop="@dimen/valueselector_margin_top_bottom"
-        android:layout_marginRight="@dimen/valueselector_margin_left_right"
-        android:layout_marginBottom="@dimen/valueselector_margin_top_bottom"
+        android:layout_margin="@dimen/valueselector_margin_left_right"
         android:src="@drawable/ic_plus"
         app:srcCompat="@drawable/ic_plus"
 
