@@ -36,6 +36,14 @@
             <enum name="bold_italic" value="3" />
         </attr>
 
+        <attr name="valueSelectorFontFamily">
+            <enum name="monospace" value="0" />
+            <enum name="serif" value="1" />
+            <enum name="sans_serif" value="2" />
+        </attr>
+
+        <attr name="customFamilyFont" format="string"/>
+
 
     </declare-styleable>
 

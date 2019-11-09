@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -55,6 +56,7 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
     private int minusIconWidthSize;
     private int minusIconHeightSize;
     private int fontStyle;
+    int fontFamily;
 
     public ValueSelector(Context context) {
         super(context);
@@ -79,6 +81,8 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         setValueTextSize(attrs);
         setIconsSize(attrs);
         setFontStyle(attrs);
+        setFontFamily(attrs);
+        setValueSelectorCustomFont(context, attrs);
     }
 
     public ValueSelector(Context context, AttributeSet attrs, int defStyle) {
@@ -96,10 +100,11 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         updateInterval(attrs);
         setGapValue(attrs);
         setViewOrientation(attrs);
-
         setValueTextSize(attrs);
         setIconsSize(attrs);
         setFontStyle(attrs);
+        setFontFamily(attrs);
+        setValueSelectorCustomFont(context, attrs);
     }
 
 
@@ -199,7 +204,6 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
             return;
         }
         ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
-
         ValueSelectorSavedState ss = new ValueSelectorSavedState(super.onSaveInstanceState());
         ss.currentValue = ta.getInt(R.styleable.ValueSelector_startValue, 0);
         valueText.setText(String.valueOf(ss.currentValue));
@@ -239,7 +243,6 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         }
         ta.recycle();
     }
-
 
     private void setValueTextSize(AttributeSet set) {
         if (set == null) {
@@ -286,6 +289,47 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         ta.recycle();
     }
 
+
+    private void setFontFamily(AttributeSet set) {
+        //  valueSelectorFontFamily
+        if (set == null) {
+            return;
+        }
+        ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
+        fontFamily = ta.getInt(R.styleable.ValueSelector_valueSelectorFontFamily, 0);
+        if (fontFamily == 0) {
+            valueText.setTypeface(Typeface.MONOSPACE);
+        } else if (fontFamily == 1) {
+            valueText.setTypeface(Typeface.SERIF);
+        } else if (fontFamily == 2) {
+            valueText.setTypeface(Typeface.SANS_SERIF);
+        }
+        ta.recycle();
+    }
+
+    private void setValueSelectorCustomFont(Context ctx, AttributeSet attrs) {
+        if (attrs == null) {
+            return;
+        }
+        ta = ctx.obtainStyledAttributes(attrs, R.styleable.ValueSelector);
+        String customFont = ta.getString(R.styleable.ValueSelector_customFamilyFont);
+        setCustomFont(ctx, customFont);
+        ta.recycle();
+    }
+
+    public boolean setCustomFont(Context ctx, String asset) {
+        Typeface tf;
+        try {
+            tf = Typeface.createFromAsset(ctx.getAssets(), asset);
+        } catch (Exception e) {
+            Log.e("TAG", "Could not get typeface: " + e.getMessage());
+            return false;
+        }
+        valueText.setTypeface(tf);
+        return true;
+    }
+
+
     public int getMinValue() {
         return minValue;
     }
@@ -321,7 +365,6 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
     }
 
 
-
     public int getValue() {
 
         String text = valueText.getText().toString();
@@ -353,14 +396,14 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
 
     private void decrementValue() {
         int value = getValue();
-        if (value>minValue)
-        setValue(value - gapValue);
+        if (value > minValue)
+            setValue(value - gapValue);
     }
 
     private void incrementValue() {
         int value = getValue();
-        if (value<maxValue)
-        setValue(value + gapValue);
+        if (value < maxValue)
+            setValue(value + gapValue);
     }
 
     @Override

@@ -26,13 +26,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         valueSelector = findViewById(R.id.value_selector);
         get = findViewById(R.id.get);
         get.setOnClickListener(this);
-
-
+        //valueSelector.setCustomFont(this, "faryekan.ttf");
     }
 
     @Override
     public void onClick(View v) {
-        Toast.makeText(this, ""+valueSelector.getValue(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "" + valueSelector.getValue(), Toast.LENGTH_SHORT).show();
     }
-    
+
 }
