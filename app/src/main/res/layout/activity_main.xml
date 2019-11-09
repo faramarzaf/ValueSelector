@@ -19,7 +19,7 @@
         app:borderRadius="5"
         app:borderThickness="2"
         app:customFamilyFont="bkoodakbold.ttf"
-        app:gapValue="2"
+        app:gapValue="1"
         app:maxValue="100"
         app:minValue="-100"
         app:minusBtnColor="#1E88E5"

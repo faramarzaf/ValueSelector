@@ -6,6 +6,7 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -13,6 +14,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -50,13 +52,13 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
     private int gapValue;
     private int viewOrientation;
     private int valueTextSize;
-
     private int plusIconWidthSize;
     private int plusIconHeightSize;
     private int minusIconWidthSize;
     private int minusIconHeightSize;
     private int fontStyle;
     int fontFamily;
+
 
     public ValueSelector(Context context) {
         super(context);
@@ -83,6 +85,7 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         setFontStyle(attrs);
         setFontFamily(attrs);
         setValueSelectorCustomFont(context, attrs);
+
     }
 
     public ValueSelector(Context context, AttributeSet attrs, int defStyle) {
@@ -105,6 +108,7 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         setFontStyle(attrs);
         setFontFamily(attrs);
         setValueSelectorCustomFont(context, attrs);
+
     }
 
 
@@ -328,7 +332,6 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         valueText.setTypeface(tf);
         return true;
     }
-
 
     public int getMinValue() {
         return minValue;
