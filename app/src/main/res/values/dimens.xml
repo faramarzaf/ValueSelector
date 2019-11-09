@@ -6,8 +6,6 @@
 
 
     <dimen name="valueselector_button_wh">32dp</dimen>
-    <dimen name="valueselector_margin_left_right">18dp</dimen>
-    <dimen name="valueselector_margin_top_bottom">18dp</dimen>
-
+    <dimen name="valueselector_margin">8dp</dimen>
 
 </resources>

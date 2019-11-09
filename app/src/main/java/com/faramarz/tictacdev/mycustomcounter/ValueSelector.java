@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Handler;
 import android.os.Parcel;
@@ -38,15 +39,22 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
     private Handler handler;
 
     private static int TIME_INTERVAL;
-    int minValue = Integer.MIN_VALUE;
-    int maxValue = Integer.MAX_VALUE;
-    int valueColor;
-    int plusColor;
-    int minusColor;
-    int borderThickness;
-    int borderRadius;
-    int gapValue;
-    int viewOrientation;
+    private int minValue = Integer.MIN_VALUE;
+    private int maxValue = Integer.MAX_VALUE;
+    private int valueColor;
+    private int plusColor;
+    private int minusColor;
+    private int borderThickness;
+    private int borderRadius;
+    private int gapValue;
+    private int viewOrientation;
+    private int valueTextSize;
+
+    private int plusIconWidthSize;
+    private int plusIconHeightSize;
+    private int minusIconWidthSize;
+    private int minusIconHeightSize;
+    private int fontStyle;
 
     public ValueSelector(Context context) {
         super(context);
@@ -68,6 +76,9 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         updateInterval(attrs);
         setGapValue(attrs);
         setViewOrientation(attrs);
+        setValueTextSize(attrs);
+        setIconsSize(attrs);
+        setFontStyle(attrs);
     }
 
     public ValueSelector(Context context, AttributeSet attrs, int defStyle) {
@@ -85,6 +96,10 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         updateInterval(attrs);
         setGapValue(attrs);
         setViewOrientation(attrs);
+
+        setValueTextSize(attrs);
+        setIconsSize(attrs);
+        setFontStyle(attrs);
     }
 
 
@@ -93,7 +108,7 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
             return;
         }
         ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
-        valueColor = ta.getColor(R.styleable.ValueSelector_value_color, Color.BLACK);
+        valueColor = ta.getColor(R.styleable.ValueSelector_valueColor, Color.BLACK);
         valueText.setTextColor(valueColor);
         ta.recycle();
     }
@@ -104,7 +119,7 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
             return;
         }
         ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
-        valueColor = ta.getColor(R.styleable.ValueSelector_border_color, Color.BLACK);
+        valueColor = ta.getColor(R.styleable.ValueSelector_borderColor, Color.BLACK);
 
         final int sdk = android.os.Build.VERSION.SDK_INT;
         if (sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
@@ -122,7 +137,7 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
             return;
         }
         ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
-        borderThickness = ta.getInteger(R.styleable.ValueSelector_border_thickness, 1);
+        borderThickness = ta.getInteger(R.styleable.ValueSelector_borderThickness, 1);
         gd.setStroke(borderThickness, valueColor);
         ta.recycle();
     }
@@ -133,7 +148,7 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
             return;
         }
         ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
-        borderRadius = ta.getInteger(R.styleable.ValueSelector_border_radius, 1);
+        borderRadius = ta.getInteger(R.styleable.ValueSelector_borderRadius, 1);
         gd.setCornerRadius(borderRadius);
         ta.recycle();
     }
@@ -144,7 +159,7 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
             return;
         }
         ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
-        plusColor = ta.getColor(R.styleable.ValueSelector_plus_btn_color, Color.BLACK);
+        plusColor = ta.getColor(R.styleable.ValueSelector_plusBtnColor, Color.BLACK);
         plusImg.setColorFilter((plusColor));
         ta.recycle();
     }
@@ -154,7 +169,7 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
             return;
         }
         ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
-        minusColor = ta.getColor(R.styleable.ValueSelector_minus_btn_color, Color.BLACK);
+        minusColor = ta.getColor(R.styleable.ValueSelector_minusBtnColor, Color.BLACK);
         minusImg.setColorFilter((minusColor));
         ta.recycle();
     }
@@ -225,6 +240,52 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         ta.recycle();
     }
 
+
+    private void setValueTextSize(AttributeSet set) {
+        if (set == null) {
+            return;
+        }
+        ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
+        valueTextSize = ta.getDimensionPixelSize(R.styleable.ValueSelector_valueTextSize, 14);
+        valueText.setTextSize(valueTextSize);
+        ta.recycle();
+    }
+
+    private void setIconsSize(AttributeSet set) {
+        if (set == null) {
+            return;
+        }
+        ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
+        plusIconWidthSize = ta.getDimensionPixelSize(R.styleable.ValueSelector_plusIconWidthSize, 15);
+        plusIconHeightSize = ta.getDimensionPixelSize(R.styleable.ValueSelector_plusIconHeightSize, 15);
+        minusIconWidthSize = ta.getDimensionPixelSize(R.styleable.ValueSelector_minusIconWidthSize, 15);
+        minusIconHeightSize = ta.getDimensionPixelSize(R.styleable.ValueSelector_minusIconHeightSize, 15);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(plusIconWidthSize, plusIconHeightSize);
+        LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams(minusIconWidthSize, minusIconHeightSize);
+        plusImg.setLayoutParams(params);
+        minusImg.setLayoutParams(params2);
+        ta.recycle();
+    }
+
+
+    private void setFontStyle(AttributeSet set) {
+        if (set == null) {
+            return;
+        }
+        ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
+        fontStyle = ta.getInt(R.styleable.ValueSelector_valueSelectorFontStyle, 0);
+        if (fontStyle == 0) {
+            valueText.setTypeface(null, Typeface.NORMAL);
+        } else if (fontStyle == 1) {
+            valueText.setTypeface(null, Typeface.BOLD);
+        } else if (fontStyle == 2) {
+            valueText.setTypeface(null, Typeface.ITALIC);
+        } else if (fontStyle == 3) {
+            valueText.setTypeface(null, Typeface.BOLD_ITALIC);
+        }
+        ta.recycle();
+    }
+
     public int getMinValue() {
         return minValue;
     }
@@ -259,6 +320,8 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         plusImg.setOnTouchListener(this);
     }
 
+
+
     public int getValue() {
 
         String text = valueText.getText().toString();
@@ -290,11 +353,13 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
 
     private void decrementValue() {
         int value = getValue();
+        if (value>minValue)
         setValue(value - gapValue);
     }
 
     private void incrementValue() {
         int value = getValue();
+        if (value<maxValue)
         setValue(value + gapValue);
     }
 

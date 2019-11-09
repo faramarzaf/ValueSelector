@@ -4,25 +4,36 @@
 
     <declare-styleable name="ValueSelector">
 
-        <attr name="value_color" format="color" />
-        <attr name="border_color" format="color" />
-        <attr name="plus_btn_color" format="color" />
-        <attr name="minus_btn_color" format="color" />
+        <attr name="valueColor" format="color" />
+        <attr name="borderColor" format="color" />
+        <attr name="plusBtnColor" format="color" />
+        <attr name="minusBtnColor" format="color" />
 
         <attr name="minValue" format="integer" />
         <attr name="maxValue" format="integer" />
         <attr name="startValue" format="integer" />
         <attr name="updateInterval" format="integer" />
-        <attr name="gapValue" format="integer"/>
+        <attr name="gapValue" format="integer" />
 
-        <attr name="border_thickness" format="integer" />
-        <attr name="border_radius" format="integer" />
-        
+        <attr name="borderThickness" format="integer" />
+        <attr name="borderRadius" format="integer" />
 
+        <attr name="valueTextSize" format="dimension" />
+        <attr name="plusIconWidthSize" format="dimension"/>
+        <attr name="plusIconHeightSize" format="dimension"/>
+        <attr name="minusIconWidthSize" format="dimension"/>
+        <attr name="minusIconHeightSize" format="dimension"/>
 
         <attr name="valueSelectorOrientation">
-            <enum name="horizontal" value="0"/>
-                <enum name="vertical" value="1"/>
+            <enum name="horizontal" value="0" />
+            <enum name="vertical" value="1" />
+        </attr>
+
+        <attr name="valueSelectorFontStyle">
+            <enum name="normal" value="0" />
+            <enum name="bold" value="1" />
+            <enum name="italic" value="2" />
+            <enum name="bold_italic" value="3" />
         </attr>
 
 

@@ -15,19 +15,35 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
 
-        app:border_color="#5C96CE"
-        app:border_radius="15"
-        app:border_thickness="5"
-        app:gapValue="5"
+        app:borderColor="#5C96CE"
+        app:borderRadius="5"
+        app:borderThickness="2"
+        app:gapValue="2"
         app:maxValue="100"
-        app:minValue="-20"
-        app:minus_btn_color="#1E88E5"
-        app:plus_btn_color="#D81B60"
-        app:startValue="5"
-        app:updateInterval="200"
-        app:value_color="#DB296A"
-        app:valueSelectorOrientation="vertical"
+        app:minValue="-100"
+        app:minusIconHeightSize="30dp"
+        app:minusIconWidthSize="30dp"
+        app:minusBtnColor="#1E88E5"
+        app:plusIconHeightSize="30dp"
+        app:plusIconWidthSize="30dp"
+        app:plusBtnColor="#D81B60"
+        app:startValue="0"
+        app:updateInterval="100"
+        app:valueSelectorFontStyle="normal"
+        app:valueSelectorOrientation="horizontal"
+        app:valueTextSize="13sp"
+        app:valueColor="#FB8C00"
+
         />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/get"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="Get value" />
 
 
 </LinearLayout>
