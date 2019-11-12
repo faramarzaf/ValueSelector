@@ -33,7 +33,9 @@
         app:valueColor="#FB8C00"
         app:valueSelectorFontStyle="normal"
         app:valueSelectorOrientation="horizontal"
-        app:valueTextSize="13sp" />
+        app:valueTextSize="13sp"
+        app:invertIconsPlace="True"
+        />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/get"

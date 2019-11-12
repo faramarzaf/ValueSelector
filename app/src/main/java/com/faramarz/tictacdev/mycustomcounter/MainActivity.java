@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         get = findViewById(R.id.get);
         get.setOnClickListener(this);
         //valueSelector.setCustomFont(this, "faryekan.ttf");
+
     }
 
     @Override

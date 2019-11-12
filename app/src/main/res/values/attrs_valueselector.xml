@@ -45,6 +45,11 @@
         <attr name="customFamilyFont" format="string"/>
 
 
+        <attr name="invertIconsPlace">
+            <enum name="False" value="0" />
+            <enum name="True" value="1" />
+        </attr>
+
 
     </declare-styleable>
 

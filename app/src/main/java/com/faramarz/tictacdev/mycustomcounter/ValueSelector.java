@@ -6,7 +6,6 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
-import android.os.Build;
 import android.os.Handler;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -14,7 +13,6 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -57,8 +55,8 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
     private int minusIconWidthSize;
     private int minusIconHeightSize;
     private int fontStyle;
-    int fontFamily;
-
+    private int fontFamily;
+    private int isIconInvert;
 
     public ValueSelector(Context context) {
         super(context);
@@ -85,7 +83,7 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         setFontStyle(attrs);
         setFontFamily(attrs);
         setValueSelectorCustomFont(context, attrs);
-
+        invertIconsPlace(attrs);
     }
 
     public ValueSelector(Context context, AttributeSet attrs, int defStyle) {
@@ -108,7 +106,7 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         setFontStyle(attrs);
         setFontFamily(attrs);
         setValueSelectorCustomFont(context, attrs);
-
+        invertIconsPlace(attrs);
     }
 
 
@@ -121,7 +119,6 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         valueText.setTextColor(valueColor);
         ta.recycle();
     }
-
 
     private void setCustomBorderColor(AttributeSet set) {
         if (set == null) {
@@ -140,7 +137,6 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         ta.recycle();
     }
 
-
     private void setCustomBorderThickness(AttributeSet set) {
         if (set == null) {
             return;
@@ -150,7 +146,6 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         gd.setStroke(borderThickness, valueColor);
         ta.recycle();
     }
-
 
     private void setCustomBorderRadius(AttributeSet set) {
         if (set == null) {
@@ -182,7 +177,6 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         minusImg.setColorFilter((minusColor));
         ta.recycle();
     }
-
 
     private void setCustomMaxValue(AttributeSet set) {
         if (set == null) {
@@ -233,7 +227,6 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         ta.recycle();
     }
 
-
     private void setViewOrientation(AttributeSet set) {
         if (set == null) {
             return;
@@ -274,7 +267,6 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         ta.recycle();
     }
 
-
     private void setFontStyle(AttributeSet set) {
         if (set == null) {
             return;
@@ -292,7 +284,6 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         }
         ta.recycle();
     }
-
 
     private void setFontFamily(AttributeSet set) {
         //  valueSelectorFontFamily
@@ -333,6 +324,22 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         return true;
     }
 
+    private void invertIconsPlace(AttributeSet set) {
+        if (set == null) {
+        }
+        ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
+        isIconInvert = ta.getInt(R.styleable.ValueSelector_invertIconsPlace, 0);
+        if (isIconInvert == 1) {
+            minusImg.setImageResource(R.drawable.ic_plus);
+            plusImg.setImageResource(R.drawable.ic_minus);
+            ta.recycle();
+        } else {
+            minusImg.setImageResource(R.drawable.ic_minus);
+            plusImg.setImageResource(R.drawable.ic_plus);
+            ta.recycle();
+        }
+    }
+
     public int getMinValue() {
         return minValue;
     }
@@ -367,7 +374,6 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         plusImg.setOnTouchListener(this);
     }
 
-
     public int getValue() {
 
         String text = valueText.getText().toString();
@@ -399,14 +405,20 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
 
     private void decrementValue() {
         int value = getValue();
-        if (value > minValue)
+        if (value > minValue && isIconInvert == 0)
             setValue(value - gapValue);
+        else if (isIconInvert == 1) {
+            setValue(value + gapValue);
+        }
     }
 
     private void incrementValue() {
         int value = getValue();
-        if (value < maxValue)
+        if (value < maxValue && isIconInvert == 0)
             setValue(value + gapValue);
+        else if (isIconInvert == 1) {
+            setValue(value - gapValue);
+        }
     }
 
     @Override
@@ -451,7 +463,6 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         }
     }
 
-
     @Override
     protected Parcelable onSaveInstanceState() {
         ValueSelectorSavedState ss = new ValueSelectorSavedState(super.onSaveInstanceState());
@@ -494,7 +505,6 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
             out.writeInt(maxValue);
         }
 
-
         public static final Parcelable.Creator<ValueSelectorSavedState> CREATOR = new Creator<ValueSelectorSavedState>() {
             @Override
             public ValueSelectorSavedState createFromParcel(Parcel parcel) {
@@ -506,11 +516,5 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
                 return new ValueSelectorSavedState[i];
             }
         };
-
     }
-
 }
-
-
-
-
