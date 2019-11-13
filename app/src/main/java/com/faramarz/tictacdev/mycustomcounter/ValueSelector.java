@@ -307,7 +307,7 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
             return;
         }
         ta = ctx.obtainStyledAttributes(attrs, R.styleable.ValueSelector);
-        String customFont = ta.getString(R.styleable.ValueSelector_customFamilyFont);
+      String customFont = ta.getString(R.styleable.ValueSelector_customFontFamily);
         setCustomFont(ctx, customFont);
         ta.recycle();
     }

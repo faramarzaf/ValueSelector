@@ -42,7 +42,7 @@
             <enum name="sans_serif" value="2" />
         </attr>
 
-        <attr name="customFamilyFont" format="string"/>
+        <attr name="customFontFamily" format="string"/>
 
 
         <attr name="invertIconsPlace">

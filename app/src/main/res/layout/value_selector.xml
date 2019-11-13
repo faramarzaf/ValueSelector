@@ -4,7 +4,6 @@
     android:id="@+id/parentView"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@drawable/bg_selector"
     android:gravity="center"
     android:orientation="horizontal">
 
@@ -21,7 +20,6 @@
             android:layout_width="@dimen/valueselector_button_wh"
             android:layout_height="@dimen/valueselector_button_wh"
             android:layout_gravity="center"
-
             android:src="@drawable/ic_plus"
             app:srcCompat="@drawable/ic_plus"
 
@@ -34,7 +32,7 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:maxWidth="80dp"
-            android:minWidth="60dp"
+            android:minWidth="40dp"
             android:text="0"
             android:textColor="@android:color/black"
               />
