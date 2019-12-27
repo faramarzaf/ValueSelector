@@ -16,8 +16,8 @@
         android:layout_marginTop="20dp"
 
         app:borderColor="#5C96CE"
-        app:borderRadius="10"
-        app:borderThickness="3"
+        app:borderRadius="6"
+        app:borderThickness="2"
         app:customFontFamily="bkoodakbold.ttf"
         app:gapValue="1"
         app:invertIconsPlace="True"
@@ -34,8 +34,7 @@
         app:valueColor="#FB8C00"
         app:valueSelectorFontStyle="normal"
         app:valueSelectorOrientation="horizontal"
-        app:valueTextSize="6sp"
-        />
+        app:valueTextSize="8sp" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/get"

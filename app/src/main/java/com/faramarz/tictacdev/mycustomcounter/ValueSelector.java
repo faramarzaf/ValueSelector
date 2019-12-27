@@ -28,12 +28,12 @@ import android.widget.TextView;
 
 public class ValueSelector extends LinearLayout implements View.OnClickListener, View.OnLongClickListener, View.OnTouchListener {
 
-    TypedArray ta;
-    View rootView;
-    TextView valueText;
-    LinearLayout parentView, itemsContainer;
-    ImageView plusImg, minusImg;
-    GradientDrawable gd = new GradientDrawable();
+    private TypedArray ta;
+    private View rootView;
+    private  TextView valueText;
+    private  LinearLayout parentView, itemsContainer;
+    private   ImageView plusImg, minusImg;
+    private   GradientDrawable gd = new GradientDrawable();
 
     private boolean isPlusButtonPressed = false;
     private boolean isMinusButtonPressed = false;
@@ -307,7 +307,7 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
             return;
         }
         ta = ctx.obtainStyledAttributes(attrs, R.styleable.ValueSelector);
-      String customFont = ta.getString(R.styleable.ValueSelector_customFontFamily);
+        String customFont = ta.getString(R.styleable.ValueSelector_customFontFamily);
         setCustomFont(ctx, customFont);
         ta.recycle();
     }
