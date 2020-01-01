@@ -22,7 +22,7 @@ import android.widget.TextView;
  * The ValueSelector helps to get value easily
  *
  * @author Faramarz Afzali
- * @version 1.0
+ * @version 1.0.2
  */
 
 
@@ -30,15 +30,13 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
 
     private TypedArray ta;
     private View rootView;
-    private  TextView valueText;
-    private  LinearLayout parentView, itemsContainer;
-    private   ImageView plusImg, minusImg;
-    private   GradientDrawable gd = new GradientDrawable();
-
+    private TextView valueText;
+    private LinearLayout parentView, itemsContainer;
+    private ImageView plusImg, minusImg;
+    private GradientDrawable gd = new GradientDrawable();
     private boolean isPlusButtonPressed = false;
     private boolean isMinusButtonPressed = false;
     private Handler handler;
-
     private static int TIME_INTERVAL;
     private int minValue = Integer.MIN_VALUE;
     private int maxValue = Integer.MAX_VALUE;
@@ -54,7 +52,6 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
     private int plusIconHeightSize;
     private int minusIconWidthSize;
     private int minusIconHeightSize;
-    private int fontStyle;
     private int fontFamily;
     private int isIconInvert;
 
@@ -80,7 +77,6 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         setViewOrientation(attrs);
         setValueTextSize(attrs);
         setIconsSize(attrs);
-        setFontStyle(attrs);
         setFontFamily(attrs);
         setValueSelectorCustomFont(context, attrs);
         invertIconsPlace(attrs);
@@ -103,12 +99,10 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         setViewOrientation(attrs);
         setValueTextSize(attrs);
         setIconsSize(attrs);
-        setFontStyle(attrs);
         setFontFamily(attrs);
         setValueSelectorCustomFont(context, attrs);
         invertIconsPlace(attrs);
     }
-
 
     private void setCustomValueColor(AttributeSet set) {
         if (set == null) {
@@ -267,26 +261,8 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         ta.recycle();
     }
 
-    private void setFontStyle(AttributeSet set) {
-        if (set == null) {
-            return;
-        }
-        ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
-        fontStyle = ta.getInt(R.styleable.ValueSelector_valueSelectorFontStyle, 0);
-        if (fontStyle == 0) {
-            valueText.setTypeface(null, Typeface.NORMAL);
-        } else if (fontStyle == 1) {
-            valueText.setTypeface(null, Typeface.BOLD);
-        } else if (fontStyle == 2) {
-            valueText.setTypeface(null, Typeface.ITALIC);
-        } else if (fontStyle == 3) {
-            valueText.setTypeface(null, Typeface.BOLD_ITALIC);
-        }
-        ta.recycle();
-    }
 
     private void setFontFamily(AttributeSet set) {
-        //  valueSelectorFontFamily
         if (set == null) {
             return;
         }

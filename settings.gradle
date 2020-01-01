@@ -1,1 +1,1 @@
-include ':app', ':valueselector2', ':valueselector'
+include ':app', ':valueselector'

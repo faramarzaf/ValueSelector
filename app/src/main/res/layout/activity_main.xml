@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-
+    <!--app:customFontFamily="bkoodakbold.ttf"-->
     <com.faramarz.tictacdev.mycustomcounter.ValueSelector
         android:id="@+id/value_selector"
         android:layout_width="wrap_content"
@@ -18,7 +18,6 @@
         app:borderColor="#5C96CE"
         app:borderRadius="6"
         app:borderThickness="2"
-        app:customFontFamily="bkoodakbold.ttf"
         app:gapValue="1"
         app:invertIconsPlace="True"
         app:maxValue="100"
@@ -29,12 +28,24 @@
         app:plusBtnColor="#D81B60"
         app:plusIconHeightSize="25dp"
         app:plusIconWidthSize="25dp"
-        app:startValue="0"
+        app:startValue="25"
         app:updateInterval="100"
         app:valueColor="#FB8C00"
-        app:valueSelectorFontStyle="normal"
         app:valueSelectorOrientation="horizontal"
-        app:valueTextSize="8sp" />
+        app:valueTextSize="8sp"
+
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="25"
+        android:textSize="22sp"
+        android:gravity="center"
+        android:textStyle="italic"
+
+        />
+
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/get"

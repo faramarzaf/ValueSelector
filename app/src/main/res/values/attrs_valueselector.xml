@@ -19,21 +19,14 @@
         <attr name="borderRadius" format="integer" />
 
         <attr name="valueTextSize" format="dimension" />
-        <attr name="plusIconWidthSize" format="dimension"/>
-        <attr name="plusIconHeightSize" format="dimension"/>
-        <attr name="minusIconWidthSize" format="dimension"/>
-        <attr name="minusIconHeightSize" format="dimension"/>
+        <attr name="plusIconWidthSize" format="dimension" />
+        <attr name="plusIconHeightSize" format="dimension" />
+        <attr name="minusIconWidthSize" format="dimension" />
+        <attr name="minusIconHeightSize" format="dimension" />
 
         <attr name="valueSelectorOrientation">
             <enum name="horizontal" value="0" />
             <enum name="vertical" value="1" />
-        </attr>
-
-        <attr name="valueSelectorFontStyle">
-            <enum name="normal" value="0" />
-            <enum name="bold" value="1" />
-            <enum name="italic" value="2" />
-            <enum name="bold_italic" value="3" />
         </attr>
 
         <attr name="valueSelectorFontFamily">
@@ -42,8 +35,7 @@
             <enum name="sans_serif" value="2" />
         </attr>
 
-        <attr name="customFontFamily" format="string"/>
-
+        <attr name="customFontFamily" format="string" />
 
         <attr name="invertIconsPlace">
             <enum name="False" value="0" />
