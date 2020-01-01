@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="valueselector_button_wh">32dp</dimen>
+    <dimen name="valueselector_margin">8dp</dimen>
+
+</resources>

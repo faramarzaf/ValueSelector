@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+    <com.faramarz.tictacdev.mycustomcounter.ValueSelector
+        android:id="@+id/value_selector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+
+        app:borderColor="#5C96CE"
+        app:borderRadius="6"
+        app:borderThickness="2"
+        app:customFontFamily="bkoodakbold.ttf"
+        app:gapValue="1"
+        app:invertIconsPlace="True"
+        app:maxValue="100"
+        app:minValue="-100"
+        app:minusBtnColor="#1E88E5"
+        app:minusIconHeightSize="25dp"
+        app:minusIconWidthSize="25dp"
+        app:plusBtnColor="#D81B60"
+        app:plusIconHeightSize="25dp"
+        app:plusIconWidthSize="25dp"
+        app:startValue="0"
+        app:updateInterval="100"
+        app:valueColor="#FB8C00"
+        app:valueSelectorFontStyle="normal"
+        app:valueSelectorOrientation="horizontal"
+        app:valueTextSize="8sp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/get"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="Get value" />
+
+
+</LinearLayout>
