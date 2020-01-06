@@ -16,7 +16,7 @@ Value Selector is a customizable Android library for value selection in any stat
 - Customizable  
   - color
   - fonts 
-    - Also supports not-latin fonts like *Persian*, *Arabic*,etc. (As you can see in first screenshot) 
+    - Also supports not-latin fonts like *Persian*, *Arabic*,etc. (As you can see in the first screenshot) 
   - size
   - thickness
   - border, etc
@@ -74,7 +74,18 @@ In your XML Layout
         app:customFontFamily="faryekan.ttf"
         />
 ```
-
+|N.o| Attributes | Description |N.o|Attributes|Description|
+|-------------| ------------- | -------------|-------------|-------------|-------------|
+|1|borderColor|b|11|plusBtnColor|b|
+|2|borderRadius|b|12|plusIconHeightSize|b|
+|3|borderThickness|b|13|plusIconWidthSize|b|
+|4|gapValue|b|14|startValue|b|
+|5|invertIconsPlace|b|15|updateInterval|b|
+|6|maxValue|b|16|valueColor|b|
+|7|minValue|b|17|valueSelectorOrientation|b|
+|8|minusBtnColor|b|18|valueTextSize|b|
+|9|minusIconHeightSize|b|19|valueSelectorFontFamily|b|
+|10|minusIconWidthSize|b|20|customFontFamily|b|
 
 # Change Log
 
