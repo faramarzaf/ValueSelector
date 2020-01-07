@@ -7,10 +7,10 @@ Value Selector is a customizable Android library for value selection in any stat
 
 # Screenshots
 <p align="center">
-  <img src="https://raw.github.com/faramarzaf/ValueSelector/master/screenshots/1.png" height="400" width="200" />
-  <img src="https://raw.github.com/faramarzaf/ValueSelector/master/screenshots/2.png"  height="400" width="200" /> 
-  <img src="https://raw.github.com/faramarzaf/ValueSelector/master/screenshots/3.png"  height="400" width="200" /> 
-  <img src="https://raw.github.com/faramarzaf/ValueSelector/master/screenshots/4.png"  height="400" width="200" /> 
+  <img src="https://raw.github.com/faramarzaf/ValueSelector/master/screenshots/1.png" height="400" width="212" />
+  <img src="https://raw.github.com/faramarzaf/ValueSelector/master/screenshots/2.png"  height="400" width="212" /> 
+  <img src="https://raw.github.com/faramarzaf/ValueSelector/master/screenshots/3.png"  height="400" width="212" /> 
+  <img src="https://raw.github.com/faramarzaf/ValueSelector/master/screenshots/4.png"  height="400" width="212" /> 
 </p>
 
 - Customizable  
@@ -76,16 +76,16 @@ In your XML Layout
 ```
 |N.o| Attributes | Description |N.o|Attributes|Description|
 |-------------| ------------- | -------------|-------------|-------------|-------------|
-|1|borderColor|b|11|plusBtnColor|b|
-|2|borderRadius|b|12|plusIconHeightSize|b|
-|3|borderThickness|b|13|plusIconWidthSize|b|
-|4|gapValue|b|14|startValue|b|
-|5|invertIconsPlace|b|15|updateInterval|b|
-|6|maxValue|b|16|valueColor|b|
-|7|minValue|b|17|valueSelectorOrientation|b|
-|8|minusBtnColor|b|18|valueTextSize|b|
-|9|minusIconHeightSize|b|19|valueSelectorFontFamily|b|
-|10|minusIconWidthSize|b|20|customFontFamily|b|
+|1|borderColor|The color of layout border|11|plusBtnColor|The color of `+` icon|
+|2|borderRadius|The radius of layout border|12|plusIconHeightSize|The height of `+` icon|
+|3|borderThickness|The thickness of layout border|13|plusIconWidthSize|The width of `+` icon|
+|4|gapValue|The distance between the values|14|startValue|The number that value selector starts work from that|
+|5|invertIconsPlace|The place of `+` & `-` will be change by True/False |15|updateInterval|The time that value changes by long press on plus or minus|
+|6|maxValue|The max value that you can select|16|valueColor|The color of value that you choose|
+|7|minValue|The min value that you can select|17|valueSelectorOrientation|Vertical or horizontal layout orientation|
+|8|minusBtnColor|The color of `-` icon|18|valueTextSize|The text size of value that you select|
+|9|minusIconHeightSize|The height of `-` icon |19|valueSelectorFontFamily|Three default font: sans_serif, sans and monospace(Without assets fonts) |
+|10|minusIconWidthSize|The width of `-` icon |20|customFontFamily|The fonts that you have in your `assets` folder|
 
 # Change Log
 
