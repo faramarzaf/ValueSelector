@@ -71,7 +71,7 @@ In your XML Layout
         app:valueSelectorOrientation="horizontal"
         app:valueTextSize="8sp"
         app:valueSelectorFontFamily="sans_serif"
-        app:customFontFamily="faryekan.ttf"
+        app:customFontFamily="your_font.ttf"
         />
 ```
 |N.o| Attributes | Description |N.o|Attributes|Description|
