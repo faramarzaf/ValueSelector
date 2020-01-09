@@ -85,7 +85,7 @@ In your XML Layout
 |7|minValue|The min value that you can select|17|valueSelectorOrientation|Vertical or horizontal layout orientation|
 |8|minusBtnColor|The color of `-` icon|18|valueTextSize|The text size of value that you select|
 |9|minusIconHeightSize|The height of `-` icon |19|valueSelectorFontFamily|Three default fonts: sans_serif, sans and monospace(Without assets fonts) |
-|10|minusIconWidthSize|The width of `-` icon |20|customFontFamily|The fonts that you have in your `assets` folder|
+|10|minusIconWidthSize|The width of `-` icon |20|customFontFamily|The font that you have in `assets` folder|
 
 Until now, just these attributes are availble in Java.  
 
