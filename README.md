@@ -7,10 +7,7 @@ Value Selector is a customizable Android library for value selection in any stat
 
 # Screenshots
 <p align="center">
-  <img src="https://raw.github.com/faramarzaf/ValueSelector/master/screenshots/1.png" height="400" width="212" />
-  <img src="https://raw.github.com/faramarzaf/ValueSelector/master/screenshots/2.png"  height="400" width="212" /> 
-  <img src="https://raw.github.com/faramarzaf/ValueSelector/master/screenshots/3.png"  height="400" width="212" /> 
-  <img src="https://raw.github.com/faramarzaf/ValueSelector/master/screenshots/4.png"  height="400" width="212" /> 
+
 </p>
 
 - Customizable  
