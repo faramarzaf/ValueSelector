@@ -120,7 +120,7 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
             return;
         }
         ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
-        valueColor = ta.getColor(R.styleable.ValueSelector_borderColor, Color.BLACK);
+        valueColor = ta.getColor(R.styleable.ValueSelector_borderColor, Color.TRANSPARENT);
 
         final int sdk = android.os.Build.VERSION.SDK_INT;
         if (sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
@@ -137,7 +137,7 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
             return;
         }
         ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
-        borderThickness = ta.getInteger(R.styleable.ValueSelector_borderThickness, 1);
+        borderThickness = ta.getInteger(R.styleable.ValueSelector_borderThickness, 0);
         gd.setStroke(borderThickness, valueColor);
         ta.recycle();
     }
@@ -147,7 +147,7 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
             return;
         }
         ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
-        borderRadius = ta.getInteger(R.styleable.ValueSelector_borderRadius, 1);
+        borderRadius = ta.getInteger(R.styleable.ValueSelector_borderRadius, 0);
         gd.setCornerRadius(borderRadius);
         ta.recycle();
     }
@@ -218,7 +218,7 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
             return;
         }
         ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
-        gapValue = ta.getInt(R.styleable.ValueSelector_gapValue, 0);
+        gapValue = ta.getInt(R.styleable.ValueSelector_gapValue, 1);
         ta.recycle();
     }
 

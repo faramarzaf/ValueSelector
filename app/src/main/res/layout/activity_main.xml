@@ -84,8 +84,7 @@
         app:valueSelectorOrientation="horizontal"
         app:valueTextSize="10sp" />
 
-
-    <!--<androidx.appcompat.widget.AppCompatButton
+  <!--<androidx.appcompat.widget.AppCompatButton
         android:id="@+id/get"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
