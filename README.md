@@ -41,7 +41,7 @@ Step 2. Add the dependency
 
 ```gradle
 	dependencies {
-	        implementation 'com.github.faramarzaf:ValueSelector:1.0.2'
+	        implementation 'com.github.faramarzaf:ValueSelector:1.0.4'
 	}
 ```
 
@@ -97,6 +97,13 @@ valueSelector.setMinValue(10);
 
 
 # Change Log
+
+- V 1.0.4 **(Jan/20/2020)**  
+  - Default value of minValue & maxValue changed to: `Integer.MIN_VALUE` , `Integer.MAX_VALUE`  
+  - Default valueTextSize changed to 20  
+  - Default value of IconsSize changed to 45  
+  - Default value of invertIconsPlace is 1  
+    - "-" icon is at left side and "+" icon is at the right side of layout (In vertical mode)  And vice versa in Horizontal mode  
 
 - V 1.0.3 **(Jan/13/2020)**
   - Default borderColor changed to transparent mood. (It was black that was not very cool)  
