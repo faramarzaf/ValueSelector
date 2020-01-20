@@ -84,6 +84,20 @@
         app:valueSelectorOrientation="horizontal"
         app:valueTextSize="10sp" />
 
+
+
+    <com.faramarz.tictacdev.mycustomcounter.ValueSelector
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:plusIconHeightSize="35dp"
+        app:plusIconWidthSize="35dp"
+        app:minusIconHeightSize="35dp"
+        app:minusIconWidthSize="35dp"
+        app:gapValue="100"
+        app:invertIconsPlace="False"
+        />
+
+
   <!--<androidx.appcompat.widget.AppCompatButton
         android:id="@+id/get"
         android:layout_width="wrap_content"

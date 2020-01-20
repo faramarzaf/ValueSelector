@@ -22,7 +22,8 @@ import android.widget.TextView;
  * The ValueSelector helps to get value easily
  *
  * @author Faramarz Afzali
- * @version 1.0.2
+ * @version 1.0.4
+ * @since Nov 8, 2019
  */
 
 
@@ -178,7 +179,7 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
             return;
         }
         ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
-        maxValue = ta.getInt(R.styleable.ValueSelector_maxValue, 10);
+        maxValue = ta.getInt(R.styleable.ValueSelector_maxValue, maxValue);
         ta.recycle();
     }
 
@@ -187,7 +188,7 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
             return;
         }
         ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
-        minValue = ta.getInt(R.styleable.ValueSelector_minValue, -10);
+        minValue = ta.getInt(R.styleable.ValueSelector_minValue, minValue);
         ta.recycle();
     }
 
@@ -241,7 +242,7 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
             return;
         }
         ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
-        valueTextSize = ta.getDimensionPixelSize(R.styleable.ValueSelector_valueTextSize, 14);
+        valueTextSize = ta.getDimensionPixelSize(R.styleable.ValueSelector_valueTextSize, 20);
         valueText.setTextSize(valueTextSize);
         ta.recycle();
     }
@@ -251,10 +252,10 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
             return;
         }
         ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
-        plusIconWidthSize = ta.getDimensionPixelSize(R.styleable.ValueSelector_plusIconWidthSize, 15);
-        plusIconHeightSize = ta.getDimensionPixelSize(R.styleable.ValueSelector_plusIconHeightSize, 15);
-        minusIconWidthSize = ta.getDimensionPixelSize(R.styleable.ValueSelector_minusIconWidthSize, 15);
-        minusIconHeightSize = ta.getDimensionPixelSize(R.styleable.ValueSelector_minusIconHeightSize, 15);
+        plusIconWidthSize = ta.getDimensionPixelSize(R.styleable.ValueSelector_plusIconWidthSize, 45);
+        plusIconHeightSize = ta.getDimensionPixelSize(R.styleable.ValueSelector_plusIconHeightSize, 45);
+        minusIconWidthSize = ta.getDimensionPixelSize(R.styleable.ValueSelector_minusIconWidthSize, 45);
+        minusIconHeightSize = ta.getDimensionPixelSize(R.styleable.ValueSelector_minusIconHeightSize, 45);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(plusIconWidthSize, plusIconHeightSize);
         LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams(minusIconWidthSize, minusIconHeightSize);
         plusImg.setLayoutParams(params);
@@ -305,7 +306,7 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         if (set == null) {
         }
         ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
-        isIconInvert = ta.getInt(R.styleable.ValueSelector_invertIconsPlace, 0);
+        isIconInvert = ta.getInt(R.styleable.ValueSelector_invertIconsPlace, 1);
         if (isIconInvert == 1) {
             minusImg.setImageResource(R.drawable.ic_plus);
             plusImg.setImageResource(R.drawable.ic_minus);
