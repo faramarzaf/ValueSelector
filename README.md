@@ -3,7 +3,7 @@
 # ValueSelector  
 
 
-Value Selector is a customizable Android library for value selection in any state that you want with easy usage.  
+Value Selector is an Android library for value selection in any state that you want with easy usage.  
 
 # Screenshots
 <p align="center">
