@@ -110,12 +110,4 @@ valueSelector.setMinValue(10);
   - Default gapValue changed to "1". (It was 0 and that's made a bug when client didn't set gapValue attr in XML layout)  
   - Default BorderThickness changed to "0".  
   - Default BorderRadius changed to "0".  
-  
-- V 1.0.2
-  - FIRST STABLE VERSION
-  
-- V 1.0.1
-  - SNAPSHOT(Recommend not to use)
-  
-- V 1.0.0
-  - SNAPSHOT(Recommend not to use)
+
