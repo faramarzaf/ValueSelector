@@ -41,7 +41,7 @@ Step 2. Add the dependency
 
 ```gradle
 	dependencies {
-		implementation 'com.github.faramarzaf:ValueSelector:v1.0.4'
+		implementation 'com.github.faramarzaf:ValueSelector:v1.0.5'
 	}
 ```
 
@@ -97,6 +97,9 @@ valueSelector.setMinValue(10);
 
 
 # Change Log
+
+- V 1.0.5 **(Jan/22/2020)**  
+  - maxWidth and minWidth changed to `90dp` & `60dp`  
 
 - V 1.0.4 **(Jan/20/2020)**  
   - Default value of minValue & maxValue changed to: `Integer.MIN_VALUE` , `Integer.MAX_VALUE`  
