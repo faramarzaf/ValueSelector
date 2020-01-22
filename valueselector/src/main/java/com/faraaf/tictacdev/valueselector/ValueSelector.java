@@ -22,7 +22,7 @@ import android.widget.TextView;
  * The ValueSelector helps to get value easily
  *
  * @author Faramarz Afzali
- * @version 1.0.4
+ * @version 1.0.5
  * @since Nov 8, 2019
  */
 

@@ -89,10 +89,10 @@
     <com.faramarz.tictacdev.mycustomcounter.ValueSelector
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:plusIconHeightSize="35dp"
-        app:plusIconWidthSize="35dp"
-        app:minusIconHeightSize="35dp"
-        app:minusIconWidthSize="35dp"
+        app:plusIconHeightSize="30dp"
+        app:plusIconWidthSize="30dp"
+        app:minusIconHeightSize="30dp"
+        app:minusIconWidthSize="30dp"
         app:gapValue="100"
         app:invertIconsPlace="False"
         />

@@ -31,8 +31,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:maxWidth="80dp"
-            android:minWidth="42dp"
+            android:maxWidth="90dp"
+            android:minWidth="60dp"
             android:text="0"
             android:textColor="@android:color/black"
               />
