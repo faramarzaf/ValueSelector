@@ -93,4 +93,9 @@ valueSelector.setCustomFont(this,"your_font.ttf");
 valueSelector.setValue(25);
 valueSelector.setMaxValue(40);
 valueSelector.setMinValue(10);
+
+valueSelector.getMaxValue();
+valueSelector.getMinValue();
+valueSelector.getValue(); //get current value
+
 ```
