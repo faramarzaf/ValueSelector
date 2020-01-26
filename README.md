@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/21a5cde82b9946d8a0e2cc63d43386c5)](https://app.codacy.com/manual/faramarzafzali/ValueSelector?utm_source=github.com&utm_medium=referral&utm_content=faramarzaf/ValueSelector&utm_campaign=Badge_Grade_Dashboard)
 [![](https://jitpack.io/v/faramarzaf/ValueSelector.svg)](https://jitpack.io/#faramarzaf/ValueSelector)
 [![API](https://img.shields.io/badge/API-20%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=20)
 # ValueSelector  
