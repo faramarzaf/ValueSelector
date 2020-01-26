@@ -43,6 +43,12 @@
             <enum name="True" value="1" />
         </attr>
 
+        <attr name="iconTypes">
+            <enum name="plus_minus" value="0" />
+            <enum name="arrow" value="1" />
+            <enum name="expand" value="2" />
+            <enum name="circle" value="3" />
+        </attr>
 
     </declare-styleable>
 

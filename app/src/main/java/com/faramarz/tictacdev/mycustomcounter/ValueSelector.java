@@ -22,7 +22,7 @@ import android.widget.TextView;
  * The ValueSelector helps to get value easily
  *
  * @author Faramarz Afzali
- * @version 1.0.5
+ * @version 1.0.6
  * @since Nov 8, 2019
  */
 
@@ -33,7 +33,8 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
     private View rootView;
     private TextView valueText;
     private LinearLayout parentView, itemsContainer;
-    private ImageView plusImg, minusImg;
+    private ImageView plusImg;
+    private ImageView minusImg;
     private GradientDrawable gd = new GradientDrawable();
     private boolean isPlusButtonPressed = false;
     private boolean isMinusButtonPressed = false;
@@ -55,6 +56,9 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
     private int minusIconHeightSize;
     private int fontFamily;
     private int isIconInvert;
+    // for selection icon types
+    private int iconTypes;
+
 
     public ValueSelector(Context context) {
         super(context);
@@ -80,7 +84,7 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         setIconsSize(attrs);
         setFontFamily(attrs);
         setValueSelectorCustomFont(context, attrs);
-        invertIconsPlace(attrs);
+        selectIconTypes(attrs);
     }
 
     public ValueSelector(Context context, AttributeSet attrs, int defStyle) {
@@ -102,9 +106,44 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         setIconsSize(attrs);
         setFontFamily(attrs);
         setValueSelectorCustomFont(context, attrs);
-        invertIconsPlace(attrs);
+        selectIconTypes(attrs);
     }
 
+
+    private void selectIconTypes(AttributeSet set) {
+        if (set == null) {
+            return;
+        }
+        ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
+        iconTypes = ta.getInt(R.styleable.ValueSelector_iconTypes, 0);
+        isIconInvert = ta.getInt(R.styleable.ValueSelector_invertIconsPlace, 0);
+        if (isIconInvert == 1 && iconTypes == 0) {
+            minusImg.setImageResource(R.drawable.ic_plus);
+            plusImg.setImageResource(R.drawable.ic_minus);
+        } else if (isIconInvert == 1 && iconTypes == 1) {
+            minusImg.setImageResource(R.drawable.ic_arrow_up);
+            plusImg.setImageResource(R.drawable.ic_arrow_down);
+        } else if (isIconInvert == 1 && iconTypes == 2) {
+            minusImg.setImageResource(R.drawable.ic_expand_up);
+            plusImg.setImageResource(R.drawable.ic_expand_down);
+        } else if (isIconInvert == 1 && iconTypes == 3) {
+            minusImg.setImageResource(R.drawable.ic_add_circle);
+            plusImg.setImageResource(R.drawable.ic_remove_circle);
+        } else if (isIconInvert == 0 && iconTypes == 0) {
+            minusImg.setImageResource(R.drawable.ic_minus);
+            plusImg.setImageResource(R.drawable.ic_plus);
+        } else if (isIconInvert == 0 && iconTypes == 1) {
+            minusImg.setImageResource(R.drawable.ic_arrow_down);
+            plusImg.setImageResource(R.drawable.ic_arrow_up);
+        } else if (isIconInvert == 0 && iconTypes == 2) {
+            minusImg.setImageResource(R.drawable.ic_expand_down);
+            plusImg.setImageResource(R.drawable.ic_expand_up);
+        } else if (isIconInvert == 0 && iconTypes == 3) {
+            minusImg.setImageResource(R.drawable.ic_remove_circle);
+            plusImg.setImageResource(R.drawable.ic_add_circle);
+        }
+        ta.recycle();
+    }
 
     private void setCustomValueColor(AttributeSet set) {
         if (set == null) {
@@ -302,21 +341,6 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         return true;
     }
 
-    private void invertIconsPlace(AttributeSet set) {
-        if (set == null) {
-        }
-        ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
-        isIconInvert = ta.getInt(R.styleable.ValueSelector_invertIconsPlace, 1);
-        if (isIconInvert == 1) {
-            minusImg.setImageResource(R.drawable.ic_plus);
-            plusImg.setImageResource(R.drawable.ic_minus);
-            ta.recycle();
-        } else {
-            minusImg.setImageResource(R.drawable.ic_minus);
-            plusImg.setImageResource(R.drawable.ic_plus);
-            ta.recycle();
-        }
-    }
 
     public int getMinValue() {
         return minValue;

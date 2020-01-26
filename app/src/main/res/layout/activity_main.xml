@@ -39,8 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_margin="30dp"
-        android:layout_marginTop="20dp"
+
         app:borderColor="#43A047"
         app:borderRadius="20"
         app:borderThickness="5"
@@ -68,7 +67,6 @@
         android:layout_marginTop="20dp"
         app:borderColor="#00FFFFFF"
         app:customFontFamily="farbaseet.ttf"
-
         app:gapValue="1"
         app:invertIconsPlace="True"
         app:maxValue="20"
@@ -85,27 +83,68 @@
         app:valueTextSize="10sp" />
 
 
+    <com.faramarz.tictacdev.mycustomcounter.ValueSelector
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:gapValue="100"
+        app:iconTypes="circle"
+        app:minusBtnColor="#1430E2"
+        app:minusIconHeightSize="30dp"
+        app:minusIconWidthSize="30dp"
+        app:plusBtnColor="#CC052A"
+        app:plusIconHeightSize="30dp"
+        app:invertIconsPlace="True"
+        app:plusIconWidthSize="30dp"
+        app:valueSelectorOrientation="horizontal" />
+
+
 
     <com.faramarz.tictacdev.mycustomcounter.ValueSelector
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:plusIconHeightSize="30dp"
-        app:plusIconWidthSize="30dp"
+        android:layout_margin="20dp"
+        app:gapValue="100"
+        app:iconTypes="expand"
+        app:minusBtnColor="#1430E2"
         app:minusIconHeightSize="30dp"
         app:minusIconWidthSize="30dp"
-        app:gapValue="100"
-        app:invertIconsPlace="False"
-        />
+        app:plusBtnColor="#CC052A"
+        app:plusIconHeightSize="30dp"
+        app:invertIconsPlace="True"
+        app:plusIconWidthSize="30dp"
+        app:valueSelectorOrientation="horizontal" />
 
 
-  <!--<androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/get"
+
+
+    <com.faramarz.tictacdev.mycustomcounter.ValueSelector
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:text="Get value" />-->
+
+        app:gapValue="100"
+        app:iconTypes="arrow"
+        app:minusBtnColor="#1430E2"
+        app:minusIconHeightSize="30dp"
+        app:minusIconWidthSize="30dp"
+        app:plusBtnColor="#CC052A"
+        app:plusIconHeightSize="30dp"
+        app:invertIconsPlace="True"
+        app:plusIconWidthSize="30dp"
+        app:valueSelectorOrientation="horizontal" />
+
+
+
+
+
+
+    <!--<androidx.appcompat.widget.AppCompatButton
+           android:id="@+id/get"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_gravity="center"
+           android:layout_marginTop="20dp"
+           android:gravity="center"
+           android:text="Get value" />-->
 
 
 </LinearLayout>

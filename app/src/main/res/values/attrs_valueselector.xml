@@ -1,28 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-
     <declare-styleable name="ValueSelector">
 
+        <!---->
         <attr name="valueColor" format="color" />
         <attr name="borderColor" format="color" />
         <attr name="plusBtnColor" format="color" />
         <attr name="minusBtnColor" format="color" />
+        <!---->
 
+        <!---->
         <attr name="minValue" format="integer" />
         <attr name="maxValue" format="integer" />
         <attr name="startValue" format="integer" />
         <attr name="updateInterval" format="integer" />
         <attr name="gapValue" format="integer" />
+        <!---->
 
+        <!---->
         <attr name="borderThickness" format="integer" />
         <attr name="borderRadius" format="integer" />
+        <!---->
 
+        <!---->
         <attr name="valueTextSize" format="dimension" />
         <attr name="plusIconWidthSize" format="dimension" />
         <attr name="plusIconHeightSize" format="dimension" />
         <attr name="minusIconWidthSize" format="dimension" />
         <attr name="minusIconHeightSize" format="dimension" />
+        <!---->
+
+        <attr name="customFontFamily" format="string" />
+
 
         <attr name="valueSelectorOrientation">
             <enum name="horizontal" value="0" />
@@ -35,15 +45,19 @@
             <enum name="sans_serif" value="2" />
         </attr>
 
-        <attr name="customFontFamily" format="string" />
-
         <attr name="invertIconsPlace">
             <enum name="False" value="0" />
             <enum name="True" value="1" />
         </attr>
 
+        <attr name="iconTypes">
+            <enum name="plus_minus" value="0" />
+            <enum name="arrow" value="1" />
+            <enum name="expand" value="2" />
+            <enum name="circle" value="3" />
+        </attr>
+
 
     </declare-styleable>
-
 
 </resources>
