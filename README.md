@@ -41,7 +41,7 @@ Step 2. Add the dependency
 
 ```gradle
 	dependencies {
-		implementation 'com.github.faramarzaf:ValueSelector:v1.0.5'
+	  implementation 'com.github.faramarzaf:ValueSelector:1.0.6'
 	}
 ```
 
@@ -71,6 +71,7 @@ In your XML Layout
         app:valueTextSize="8sp"
         app:valueSelectorFontFamily="sans_serif"
         app:customFontFamily="your_font.ttf"
+	app:iconTypes="circle"					      
         />
 ```
 |N.o| Attributes | Description |N.o|Attributes|Description|
