@@ -8,9 +8,9 @@ Value Selector is an Android library for value selection in any state that you w
 
 # Screenshots
 <p align="center">
-<img src="https://raw.github.com/faramarzaf/ValueSelector/master/screenshots/se.png" height="400" width="212" />
-<img src="https://raw.github.com/faramarzaf/ValueSelector/master/screenshots/yek.png" height="400" width="212" />
-<img src="https://raw.github.com/faramarzaf/ValueSelector/master/screenshots/do.png" height="400" width="212" />
+<img src="https://raw.github.com/faramarzaf/ValueSelector/master/screenshots/se.png" height="440" width="262" />
+<img src="https://raw.github.com/faramarzaf/ValueSelector/master/screenshots/yek.png" height="440" width="262" />
+<img src="https://raw.github.com/faramarzaf/ValueSelector/master/screenshots/do.png" height="440" width="262" />
 </p>
 
 - Customizable  
