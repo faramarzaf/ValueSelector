@@ -4,7 +4,7 @@
 # ValueSelector  
 
 
-Value Selector is an Android library for value selection in any state that you want with easy usage.  
+Value Selector is an Android library for value selection in any state that you want with easy usage. 
 
 # Screenshots
 <p align="center">
@@ -13,21 +13,21 @@ Value Selector is an Android library for value selection in any state that you w
 <img src="https://raw.github.com/faramarzaf/ValueSelector/master/screenshots/do.png" height="440" width="262" />
 </p>
 
-- Customizable  
+- Customizable 
   - color
   - fonts 
     - Also supports not-latin fonts like *Persian*, *Arabic*,etc. (As you can see in the first screenshot) 
   - size
   - thickness
   - border, etc
-- Horizontal and Vertical orientation are supported  
-- Build in **AndroidX**  
+- Horizontal and Vertical orientation are supported 
+- Build in **AndroidX** 
 
- :heavy_exclamation_mark: **Note:** Place your custom fonts in `assets` folder to access `customFontFamily` attr.  
+ :heavy_exclamation_mark: **Note:** Place your custom fonts in `assets` folder to access `customFontFamily` attr. 
 
 # Usage
 
-Add it in your root `build.gradle` at the end of repositories:  
+Add it in your root `build.gradle` at the end of repositories: 
 
 ```gradle
 	allprojects {
@@ -38,7 +38,7 @@ Add it in your root `build.gradle` at the end of repositories:
 	}
   
 ```
-Step 2. Add the dependency  
+Step 2. Add the dependency 
 
 ```gradle
 	dependencies {
@@ -46,7 +46,8 @@ Step 2. Add the dependency
 	}
 ```
 
-In your XML Layout  
+In your XML Layout 
+
 ```xml
 <com.faramarz.tictacdev.mycustomcounter.ValueSelector
         android:id="@+id/value_selector"
