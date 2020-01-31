@@ -430,10 +430,10 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
             isMinusButtonPressed = false;
             //    Toast.makeText(getContext(), "up", Toast.LENGTH_SHORT).show();
 
-        } else if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+        }/* else if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
             //Toast.makeText(getContext(), "down", Toast.LENGTH_SHORT).show();
 
-        }
+        }*/
         return false;
     }
 
