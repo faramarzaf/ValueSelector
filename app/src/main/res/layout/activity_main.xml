@@ -16,22 +16,22 @@
         android:layout_gravity="center_horizontal"
         android:layout_margin="30dp"
         android:layout_marginTop="20dp"
-        app:borderColor="#D81B60"
+        app:borderColor="#000000"
         app:borderRadius="10"
-        app:borderThickness="12"
-        app:customFontFamily="bkoodakbold.ttf"
+        app:borderThickness="8"
+        app:customFontFamily="bnazanin.ttf"
         app:gapValue="1"
         app:invertIconsPlace="False"
         app:maxValue="20"
         app:minValue="-20"
-        app:minusBtnColor="#7CB342"
+        app:minusBtnColor="#43A047"
         app:minusIconHeightSize="35dp"
         app:minusIconWidthSize="35dp"
         app:plusBtnColor="#7CB342"
         app:plusIconHeightSize="35dp"
         app:plusIconWidthSize="35dp"
         app:updateInterval="100"
-        app:valueColor="#000000"
+        app:valueColor="#5E35B1"
         app:valueSelectorOrientation="horizontal"
         app:valueTextSize="10sp" />
 
@@ -39,19 +39,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-
-        app:borderColor="#43A047"
+        app:borderColor="#FB8C00"
         app:borderRadius="20"
         app:borderThickness="5"
-        app:customFontFamily="bnazanin.ttf"
+        app:customFontFamily="bkoodakbold.ttf"
         app:gapValue="1"
         app:invertIconsPlace="False"
         app:maxValue="20"
         app:minValue="-20"
-        app:minusBtnColor="#00897B"
+        app:minusBtnColor="#000000"
         app:minusIconHeightSize="35dp"
         app:minusIconWidthSize="35dp"
-        app:plusBtnColor="#00897B"
+        app:plusBtnColor="#101011"
         app:plusIconHeightSize="35dp"
         app:plusIconWidthSize="35dp"
         app:updateInterval="100"
@@ -83,59 +82,50 @@
         app:valueTextSize="10sp" />
 
 
-    <com.faramarz.tictacdev.mycustomcounter.ValueSelector
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:gapValue="100"
-        app:iconTypes="circle"
-        app:minusBtnColor="#1430E2"
-        app:minusIconHeightSize="30dp"
-        app:minusIconWidthSize="30dp"
-        app:plusBtnColor="#CC052A"
-        app:plusIconHeightSize="30dp"
-        app:invertIconsPlace="True"
-        app:plusIconWidthSize="30dp"
-        app:valueSelectorOrientation="horizontal" />
+    <!--    <com.faramarz.tictacdev.mycustomcounter.ValueSelector
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:gapValue="100"
+            app:iconTypes="circle"
+            app:invertIconsPlace="True"
+            app:minusBtnColor="#1430E2"
+            app:minusIconHeightSize="30dp"
+            app:minusIconWidthSize="30dp"
+            app:plusBtnColor="#CC052A"
+            app:plusIconHeightSize="30dp"
+            app:plusIconWidthSize="30dp"
+            app:valueSelectorOrientation="horizontal" />
 
 
-
-    <com.faramarz.tictacdev.mycustomcounter.ValueSelector
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        app:gapValue="100"
-        app:iconTypes="expand"
-        app:minusBtnColor="#1430E2"
-        app:minusIconHeightSize="30dp"
-        app:minusIconWidthSize="30dp"
-        app:plusBtnColor="#CC052A"
-        app:plusIconHeightSize="30dp"
-        app:invertIconsPlace="True"
-        app:plusIconWidthSize="30dp"
-        app:valueSelectorOrientation="horizontal" />
-
+        <com.faramarz.tictacdev.mycustomcounter.ValueSelector
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            app:gapValue="100"
+            app:iconTypes="expand"
+            app:invertIconsPlace="True"
+            app:minusBtnColor="#1430E2"
+            app:minusIconHeightSize="30dp"
+            app:minusIconWidthSize="30dp"
+            app:plusBtnColor="#CC052A"
+            app:plusIconHeightSize="30dp"
+            app:plusIconWidthSize="30dp"
+            app:valueSelectorOrientation="horizontal" />
 
 
-
-    <com.faramarz.tictacdev.mycustomcounter.ValueSelector
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        app:gapValue="100"
-        app:iconTypes="arrow"
-        app:minusBtnColor="#1430E2"
-        app:minusIconHeightSize="30dp"
-        app:minusIconWidthSize="30dp"
-        app:plusBtnColor="#CC052A"
-        app:plusIconHeightSize="30dp"
-        app:invertIconsPlace="True"
-        app:plusIconWidthSize="30dp"
-        app:valueSelectorOrientation="horizontal" />
-
-
-
-
-
+        <com.faramarz.tictacdev.mycustomcounter.ValueSelector
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:gapValue="100"
+            app:iconTypes="arrow"
+            app:invertIconsPlace="True"
+            app:minusBtnColor="#1430E2"
+            app:minusIconHeightSize="30dp"
+            app:minusIconWidthSize="30dp"
+            app:plusBtnColor="#CC052A"
+            app:plusIconHeightSize="30dp"
+            app:plusIconWidthSize="30dp"
+            app:valueSelectorOrientation="horizontal" />-->
 
     <!--<androidx.appcompat.widget.AppCompatButton
            android:id="@+id/get"
