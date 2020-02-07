@@ -1,4 +1,12 @@
-# Change Log
+# Change Log 
+
+
+- v1.0.6 **(Jan/26/2020)**  
+  - New styles added for plus and minus icon  
+    - plus_minus
+    - arrow
+    - expand
+    - circle
 
 - v1.0.5 **(Jan/22/2020)**  
   - maxWidth and minWidth changed to `90dp` & `60dp`  
