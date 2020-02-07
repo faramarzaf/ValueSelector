@@ -5,7 +5,6 @@
 
 Value Selector is an Android library for value selection in any state that you want with easy usage. 
 
-# Screenshots
 <p align="center">
 <img src="https://raw.github.com/faramarzaf/ValueSelector/master/screenshots/Value Selector.png" />
 </p>
@@ -13,7 +12,7 @@ Value Selector is an Android library for value selection in any state that you w
 - Customizable 
   - color
   - fonts 
-    - Also supports not-latin fonts like *Persian*, *Arabic*,etc. (As you can see in the first screenshot) 
+    - Also supports not-latin fonts like *Persian*, *Arabic*,etc.
   - size
   - thickness
   - border, etc
