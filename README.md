@@ -86,8 +86,9 @@ In your XML Layout
 |8|minusBtnColor|The color of `-` icon|18|valueTextSize|The text size of value that you select|
 |9|minusIconHeightSize|The height of `-` icon |19|valueSelectorFontFamily|Three default fonts: sans_serif, sans and monospace(Without assets fonts) |
 |10|minusIconWidthSize|The width of `-` icon |20|customFontFamily|The font that you have in `assets` folder|
+|21|iconTypes|Choose between these types `plus_minus` , `arrow` , `expand` , `circle`||||  
 
-Until now, just these attributes are availble in Java.  
+Until now, just these attributes are availble in Java.   
 
 ```java
 valueSelector.setCustomFont(this,"your_font.ttf");
