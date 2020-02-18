@@ -24,6 +24,7 @@
         app:invertIconsPlace="False"
         app:maxValue="20"
         app:minValue="-20"
+        app:startValue="5"
         app:minusBtnColor="#43A047"
         app:minusIconHeightSize="35dp"
         app:minusIconWidthSize="35dp"
@@ -127,14 +128,14 @@
             app:plusIconWidthSize="30dp"
             app:valueSelectorOrientation="horizontal" />-->
 
-    <!--<androidx.appcompat.widget.AppCompatButton
+    <androidx.appcompat.widget.AppCompatButton
            android:id="@+id/get"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:layout_gravity="center"
            android:layout_marginTop="20dp"
            android:gravity="center"
-           android:text="Get value" />-->
+           android:text="Get value" />
 
 
 </LinearLayout>

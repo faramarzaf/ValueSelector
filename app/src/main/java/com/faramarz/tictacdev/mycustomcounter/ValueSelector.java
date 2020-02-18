@@ -11,6 +11,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -22,12 +23,12 @@ import android.widget.TextView;
  * The ValueSelector helps to get value easily
  *
  * @author Faramarz Afzali
- * @version 1.0.6
+ * @version 1.0.7
  * @since Nov 8, 2019
  */
 
 
-public class ValueSelector extends LinearLayout implements View.OnClickListener, View.OnLongClickListener, View.OnTouchListener {
+public class ValueSelector extends LinearLayout implements View.OnClickListener, View.OnLongClickListener, View.OnTouchListener, PublicMethods {
 
     private TypedArray ta;
     private View rootView;
@@ -341,23 +342,6 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         return true;
     }
 
-
-    public int getMinValue() {
-        return minValue;
-    }
-
-    public void setMinValue(int minValue) {
-        this.minValue = minValue;
-    }
-
-    public int getMaxValue() {
-        return maxValue;
-    }
-
-    public void setMaxValue(int maxValue) {
-        this.maxValue = maxValue;
-    }
-
     @SuppressLint("ClickableViewAccessibility")
     private void init(Context context) {
         setSaveEnabled(true);
@@ -377,7 +361,6 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
     }
 
     public int getValue() {
-
         String text = valueText.getText().toString();
         if (text.isEmpty()) {
             valueText.setText("0");
@@ -395,6 +378,57 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
             valueText.setText(String.valueOf(newValue));
         }
     }
+
+
+    public int getMinValue() {
+        return minValue;
+    }
+
+    public void setMinValue(int minValue) {
+        this.minValue = minValue;
+    }
+
+    public int getMaxValue() {
+        return maxValue;
+    }
+
+    public void setMaxValue(int maxValue) {
+        this.maxValue = maxValue;
+    }
+
+    public int length() {
+        return valueText.length();
+    }
+
+    public void setValueTextColor(int color) {
+        valueText.setTextColor(color);
+    }
+
+    public void setPlusIconColor(int color) {
+        plusImg.setColorFilter(color);
+    }
+
+    public void setMinusIconColor(int color) {
+        minusImg.setColorFilter(color);
+
+    }
+
+    public void setPlusIconResource(int resource) {
+        plusImg.setImageResource(resource);
+    }
+
+    public void setMinusIconResource(int resource) {
+        minusImg.setImageResource(resource);
+    }
+
+    public void setValueTextSize(int unit, float size) {
+        valueText.setTextSize(unit, size);
+    }
+
+    public void updateInterval(int time) {
+          TIME_INTERVAL = time;
+    }
+
 
     @Override
     public void onClick(View view) {

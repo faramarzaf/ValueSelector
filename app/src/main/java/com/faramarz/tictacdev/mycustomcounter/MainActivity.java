@@ -1,6 +1,7 @@
 package com.faramarz.tictacdev.mycustomcounter;
 
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -17,15 +18,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         valueSelector = findViewById(R.id.value_selector);
+        get = findViewById(R.id.get);
+        get.setOnClickListener(this);
 
-       /* get = findViewById(R.id.get);
-        get.setOnClickListener(this);*/
+        valueSelector.setValueTextColor(getResources().getColor(R.color.colorAccent));
+        valueSelector.setMinusIconColor(getResources().getColor(R.color.colorAccent));
+        valueSelector.setPlusIconColor(getResources().getColor(R.color.colorAccent));
+        valueSelector.setPlusIconResource(R.drawable.ic_plus);
+        valueSelector.setMinusIconResource(R.drawable.ic_remove_circle);
+        valueSelector.setValueTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+        valueSelector.updateInterval(1);
+
     }
 
     @Override
     public void onClick(View v) {
         String value = String.valueOf(valueSelector.getValue());
-        Toast.makeText(this, value, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, value + "/" + valueSelector.length(), Toast.LENGTH_SHORT).show();
+
     }
 
 }
