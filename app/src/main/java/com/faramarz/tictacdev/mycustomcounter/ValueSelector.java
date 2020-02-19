@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Handler;
 import android.os.Parcel;
@@ -425,8 +426,18 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         valueText.setTextSize(unit, size);
     }
 
-    public void updateInterval(int time) {
-          TIME_INTERVAL = time;
+    public void setBorderColor(int borderColor, int width) {
+        int sdk = android.os.Build.VERSION.SDK_INT;
+        if (sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+            parentView.setBackgroundDrawable(gd);
+        } else {
+            parentView.setBackground(gd);
+        }
+        gd.setStroke(width, borderColor);
+    }
+
+    public void setBorderRadius(int radius) {
+        gd.setCornerRadius(radius);
     }
 
 

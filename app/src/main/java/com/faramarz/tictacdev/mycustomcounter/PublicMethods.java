@@ -33,6 +33,8 @@ public interface PublicMethods {
 
     void setValueTextSize(int unit, float size);
 
-    void updateInterval(int time);
+    void setBorderColor(int borderColor, int width);
+
+    void setBorderRadius(int radius);
 
 }
