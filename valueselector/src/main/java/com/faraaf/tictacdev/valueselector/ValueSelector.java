@@ -22,12 +22,12 @@ import android.widget.TextView;
  * The ValueSelector helps to get value easily
  *
  * @author Faramarz Afzali
- * @version 1.0.6
+ * @version 1.0.7
  * @since Nov 8, 2019
  */
 
 
-public class ValueSelector extends LinearLayout implements View.OnClickListener, View.OnLongClickListener, View.OnTouchListener {
+public class ValueSelector extends LinearLayout implements View.OnClickListener, View.OnLongClickListener, View.OnTouchListener, PublicMethods {
 
     private TypedArray ta;
     private View rootView;
@@ -379,6 +379,65 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
             return 0;
         }
         return Integer.valueOf(text);
+    }
+
+    @Override
+    public int length() {
+        return valueText.length();
+    }
+
+    @Override
+    public void setValueTextColor(int color) {
+        valueText.setTextColor(color);
+    }
+
+    @Override
+    public void setPlusIconColor(int color) {
+        plusImg.setColorFilter(color);
+    }
+
+    @Override
+    public void setMinusIconColor(int color) {
+        minusImg.setColorFilter(color);
+    }
+
+    @Override
+    public void setPlusIconResource(int resource) {
+        plusImg.setImageResource(resource);
+    }
+
+    @Override
+    public void setMinusIconResource(int resource) {
+        minusImg.setImageResource(resource);
+    }
+
+    @Override
+    public void setValueTextSize(int unit, float size) {
+        valueText.setTextSize(unit, size);
+    }
+
+    @Override
+    public void setBorderColor(int borderColor, int width) {
+        int sdk = android.os.Build.VERSION.SDK_INT;
+        if (sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+            parentView.setBackgroundDrawable(gd);
+        } else {
+            parentView.setBackground(gd);
+        }
+        gd.setStroke(width, borderColor);
+    }
+
+    @Override
+    public void setBorderRadius(int radius) {
+        gd.setCornerRadius(radius);
+    }
+
+    public void gapValue(int gap) {
+        gapValue = gap;
+    }
+
+    public void setLayoutOrientation(int orientation) {
+        itemsContainer.setOrientation(orientation);
     }
 
     public void setValue(int newValue) {

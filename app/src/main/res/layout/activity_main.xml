@@ -22,20 +22,22 @@
         app:customFontFamily="bnazanin.ttf"
         app:gapValue="1"
         app:invertIconsPlace="False"
-        app:maxValue="20"
+        app:maxValue="200"
         app:minValue="-20"
+        app:startValue="5"
         app:minusBtnColor="#43A047"
         app:minusIconHeightSize="35dp"
         app:minusIconWidthSize="35dp"
         app:plusBtnColor="#7CB342"
         app:plusIconHeightSize="35dp"
         app:plusIconWidthSize="35dp"
-        app:updateInterval="100"
+        app:updateInterval="10000"
         app:valueColor="#5E35B1"
         app:valueSelectorOrientation="horizontal"
         app:valueTextSize="10sp" />
 
     <com.faramarz.tictacdev.mycustomcounter.ValueSelector
+        android:id="@+id/value_selector2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -45,7 +47,7 @@
         app:customFontFamily="bkoodakbold.ttf"
         app:gapValue="1"
         app:invertIconsPlace="False"
-        app:maxValue="20"
+        app:maxValue="200"
         app:minValue="-20"
         app:minusBtnColor="#000000"
         app:minusIconHeightSize="35dp"
@@ -53,7 +55,7 @@
         app:plusBtnColor="#101011"
         app:plusIconHeightSize="35dp"
         app:plusIconWidthSize="35dp"
-        app:updateInterval="100"
+        app:updateInterval="10000"
         app:valueColor="#000000"
         app:valueSelectorOrientation="vertical"
         app:valueTextSize="10sp" />
@@ -127,14 +129,14 @@
             app:plusIconWidthSize="30dp"
             app:valueSelectorOrientation="horizontal" />-->
 
-    <!--<androidx.appcompat.widget.AppCompatButton
+    <androidx.appcompat.widget.AppCompatButton
            android:id="@+id/get"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:layout_gravity="center"
            android:layout_marginTop="20dp"
            android:gravity="center"
-           android:text="Get value" />-->
+           android:text="Get value" />
 
 
 </LinearLayout>
