@@ -100,7 +100,9 @@ valueSelector.getMaxValue();
 valueSelector.getMinValue();
 valueSelector.getValue(); //get current value
 
-valueSelector.setValueTextColor(getResources().getColor(R.color.colorAccent));        valueSelector.setMinusIconColor(getResources().getColor(R.color.colorAccent));       valueSelector.setPlusIconColor(getResources().getColor(R.color.colorAccent));
+valueSelector.setValueTextColor(getResources().getColor(R.color.colorAccent));
+valueSelector.setMinusIconColor(getResources().getColor(R.color.colorAccent));
+valueSelector.setPlusIconColor(getResources().getColor(R.color.colorAccent));
 
 valueSelector.setPlusIconResource(R.drawable.ic_plus);
 valueSelector.setMinusIconResource(R.drawable.ic_remove_circle);
