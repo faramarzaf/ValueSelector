@@ -1,4 +1,4 @@
-package com.faramarz.tictacdev.mycustomcounter;
+package com.faraaf.tictacdev.valueselector;
 
 
 /**
@@ -40,5 +40,4 @@ public interface PublicMethods {
     void gapValue(int gap);
 
     void setLayoutOrientation(int orientation);
-
 }

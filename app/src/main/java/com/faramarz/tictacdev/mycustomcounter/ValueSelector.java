@@ -5,14 +5,12 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Handler;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -440,6 +438,13 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         gd.setCornerRadius(radius);
     }
 
+    public void gapValue(int gap) {
+        gapValue = gap;
+    }
+
+    public void setLayoutOrientation(int orientation) {
+        itemsContainer.setOrientation(orientation);
+    }
 
     @Override
     public void onClick(View view) {
