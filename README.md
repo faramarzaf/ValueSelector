@@ -38,7 +38,7 @@ Step 2. Add the dependency
 
 ```gradle
 	dependencies {
-	  implementation 'com.github.faramarzaf:ValueSelector:1.0.6'
+	  implementation 'com.github.faramarzaf:ValueSelector:1.0.7'
 	}
 ```
 
@@ -88,7 +88,7 @@ In your XML Layout
 |10|minusIconWidthSize|The width of `-` icon |20|customFontFamily|The font that you have in `assets` folder|
 |21|iconTypes|Choose between these types `plus_minus` , `arrow` , `expand` , `circle`||||  
 
-Until now, just these attributes are availble in Java.   
+Java usage  
 
 ```java
 valueSelector.setCustomFont(this,"your_font.ttf");
@@ -99,5 +99,17 @@ valueSelector.setMinValue(10);
 valueSelector.getMaxValue();
 valueSelector.getMinValue();
 valueSelector.getValue(); //get current value
+
+valueSelector.setValueTextColor(getResources().getColor(R.color.colorAccent));        valueSelector.setMinusIconColor(getResources().getColor(R.color.colorAccent));       valueSelector.setPlusIconColor(getResources().getColor(R.color.colorAccent));
+
+valueSelector.setPlusIconResource(R.drawable.ic_plus);
+valueSelector.setMinusIconResource(R.drawable.ic_remove_circle);
+valueSelector.setValueTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+
+valueSelector.setBorderColor(Color.BLACK, 0);
+valueSelector.setBorderRadius(2);
+valueSelector.gapValue(5);
+valueSelector.setLayoutOrientation(LinearLayout.VERTICAL);
+       
 
 ```
