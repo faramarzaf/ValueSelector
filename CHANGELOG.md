@@ -1,5 +1,21 @@
 # Change Log 
 
+- v1.0.7 **(Feb/20/2020)**  
+  - New Java public methods added
+  ```java
+  
+   int length();
+   void setValueTextColor(int color);
+   void setPlusIconColor(int color);
+   void setMinusIconColor(int color);
+   void setPlusIconResource(int resource);
+   void setMinusIconResource(int resource);
+   void setValueTextSize(int unit, float size);
+   void setBorderColor(int borderColor, int width);
+   void setBorderRadius(int radius);
+   void gapValue(int gap);
+   void setLayoutOrientation(int orientation);
+  ```
 
 - v1.0.6 **(Jan/26/2020)**  
   - New styles added for plus and minus icon  
