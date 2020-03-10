@@ -1,11 +1,13 @@
 package com.faraaf.tictacdev.valueselector;
 
 
+import android.view.View;
+
 /**
  * public methods for client usage by Java
  */
 
-public interface PublicMethods {
+public interface LibraryPublicMethods {
 
     int getMinValue();
 
@@ -40,4 +42,8 @@ public interface PublicMethods {
     void gapValue(int gap);
 
     void setLayoutOrientation(int orientation);
+
+    void setUpdateInterval(int time);
+
+    void initActionDownColor(View view, int color);
 }

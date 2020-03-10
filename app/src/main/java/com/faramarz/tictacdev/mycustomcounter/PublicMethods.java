@@ -1,6 +1,8 @@
 package com.faramarz.tictacdev.mycustomcounter;
 
 
+import android.view.View;
+
 /**
  * public methods for client usage by Java
  */
@@ -41,4 +43,7 @@ public interface PublicMethods {
 
     void setLayoutOrientation(int orientation);
 
+    void setUpdateInterval(int time);
+
+    void initActionDownColor(View view, int color);
 }

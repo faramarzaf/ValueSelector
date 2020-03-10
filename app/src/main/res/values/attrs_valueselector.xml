@@ -1,56 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <declare-styleable name="ValueSelector">
+    <declare-styleable name="TestValueSelector">
 
         <!---->
-        <attr name="valueColor" format="color" />
-        <attr name="borderColor" format="color" />
-        <attr name="plusBtnColor" format="color" />
-        <attr name="minusBtnColor" format="color" />
-        <!---->
-
-        <!---->
-        <attr name="minValue" format="integer" />
-        <attr name="maxValue" format="integer" />
-        <attr name="startValue" format="integer" />
-        <attr name="updateInterval" format="integer" />
-        <attr name="gapValue" format="integer" />
+        <attr name="testvalueColor" format="color" />
+        <attr name="testborderColor" format="color" />
+        <attr name="testplusBtnColor" format="color" />
+        <attr name="testminusBtnColor" format="color" />
+        <attr name="testactionDownColor" format="color" />
         <!---->
 
         <!---->
-        <attr name="borderThickness" format="integer" />
-        <attr name="borderRadius" format="integer" />
+        <attr name="testminValue" format="integer" />
+        <attr name="testmaxValue" format="integer" />
+        <attr name="teststartValue" format="integer" />
+        <attr name="testupdateInterval" format="integer" />
+        <attr name="testgapValue" format="integer" />
         <!---->
 
         <!---->
-        <attr name="valueTextSize" format="dimension" />
-        <attr name="plusIconWidthSize" format="dimension" />
-        <attr name="plusIconHeightSize" format="dimension" />
-        <attr name="minusIconWidthSize" format="dimension" />
-        <attr name="minusIconHeightSize" format="dimension" />
+        <attr name="testborderThickness" format="integer" />
+        <attr name="testborderRadius" format="integer" />
         <!---->
 
-        <attr name="customFontFamily" format="string" />
+        <!---->
+        <attr name="testvalueTextSize" format="dimension" />
+        <attr name="testplusIconWidthSize" format="dimension" />
+        <attr name="testplusIconHeightSize" format="dimension" />
+        <attr name="testminusIconWidthSize" format="dimension" />
+        <attr name="testminusIconHeightSize" format="dimension" />
+        <!---->
+
+        <attr name="testcustomFontFamily" format="string" />
 
 
-        <attr name="valueSelectorOrientation">
+        <attr name="testvalueSelectorOrientation">
             <enum name="horizontal" value="0" />
             <enum name="vertical" value="1" />
         </attr>
 
-        <attr name="valueSelectorFontFamily">
+        <attr name="testvalueSelectorFontFamily">
             <enum name="monospace" value="0" />
             <enum name="serif" value="1" />
             <enum name="sans_serif" value="2" />
         </attr>
 
-        <attr name="invertIconsPlace">
+        <attr name="testinvertIconsPlace">
             <enum name="False" value="0" />
             <enum name="True" value="1" />
         </attr>
 
-        <attr name="iconTypes">
+        <attr name="testiconTypes">
             <enum name="plus_minus" value="0" />
             <enum name="arrow" value="1" />
             <enum name="expand" value="2" />

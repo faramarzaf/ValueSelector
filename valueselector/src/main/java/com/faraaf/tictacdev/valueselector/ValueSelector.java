@@ -22,23 +22,24 @@ import android.widget.TextView;
  * The ValueSelector helps to get value easily
  *
  * @author Faramarz Afzali
- * @version 1.0.7
+ * @version 1.0.8
  * @since Nov 8, 2019
  */
 
 
-public class ValueSelector extends LinearLayout implements View.OnClickListener, View.OnLongClickListener, View.OnTouchListener, PublicMethods {
+public class ValueSelector extends LinearLayout implements View.OnClickListener, View.OnLongClickListener, View.OnTouchListener, LibraryPublicMethods {
 
-    private TypedArray ta;
+    private static final String LOG_TAG = "LOG_TAG";
+    private TypedArray typedArray;
     private View rootView;
     private TextView valueText;
     private LinearLayout parentView, itemsContainer;
-    private ImageView plusImg, minusImg;
+    private ImageView plusImg;
+    private ImageView minusImg;
     private GradientDrawable gd = new GradientDrawable();
+    private Handler handler;
     private boolean isPlusButtonPressed = false;
     private boolean isMinusButtonPressed = false;
-    private Handler handler;
-    private static int TIME_INTERVAL;
     private int minValue = Integer.MIN_VALUE;
     private int maxValue = Integer.MAX_VALUE;
     private int valueColor;
@@ -55,11 +56,16 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
     private int minusIconHeightSize;
     private int fontFamily;
     private int isIconInvert;
+    private int intervalTime;
+    private int actionDownColor;
+    // for selection icon types
     private int iconTypes;
+
 
     public ValueSelector(Context context) {
         super(context);
         init(context);
+
     }
 
     public ValueSelector(Context context, AttributeSet attrs) {
@@ -82,6 +88,8 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         setFontFamily(attrs);
         setValueSelectorCustomFont(context, attrs);
         selectIconTypes(attrs);
+        setActionDownColor(attrs);
+        checkInvertIconColor();
     }
 
     public ValueSelector(Context context, AttributeSet attrs, int defStyle) {
@@ -104,15 +112,33 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         setFontFamily(attrs);
         setValueSelectorCustomFont(context, attrs);
         selectIconTypes(attrs);
+        setActionDownColor(attrs);
+        checkInvertIconColor();
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private void init(Context context) {
+        setSaveEnabled(true);
+        rootView = inflate(context, R.layout.value_selector, this);
+        valueText = rootView.findViewById(R.id.value_number);
+        minusImg = rootView.findViewById(R.id.btn_minus);
+        parentView = rootView.findViewById(R.id.parentView);
+        plusImg = rootView.findViewById(R.id.btn_plus);
+        itemsContainer = rootView.findViewById(R.id.itemsContainer);
+        handler = new Handler();
+        plusImg.setOnClickListener(this);
+        minusImg.setOnClickListener(this);
+        plusImg.setOnLongClickListener(this);
+        minusImg.setOnLongClickListener(this);
+        minusImg.setOnTouchListener(this);
+        plusImg.setOnTouchListener(this);
     }
 
     private void selectIconTypes(AttributeSet set) {
-        if (set == null) {
-            return;
-        }
-        ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
-        iconTypes = ta.getInt(R.styleable.ValueSelector_iconTypes, 0);
-        isIconInvert = ta.getInt(R.styleable.ValueSelector_invertIconsPlace, 0);
+        checkNullSet(set);
+        typedArray = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
+        iconTypes = typedArray.getInt(R.styleable.ValueSelector_iconTypes, 0);
+        isIconInvert = typedArray.getInt(R.styleable.ValueSelector_invertIconsPlace, 0);
         if (isIconInvert == 1 && iconTypes == 0) {
             minusImg.setImageResource(R.drawable.ic_plus);
             plusImg.setImageResource(R.drawable.ic_minus);
@@ -138,173 +164,161 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
             minusImg.setImageResource(R.drawable.ic_remove_circle);
             plusImg.setImageResource(R.drawable.ic_add_circle);
         }
-        ta.recycle();
+        typedArray.recycle();
     }
 
     private void setCustomValueColor(AttributeSet set) {
-        if (set == null) {
-            return;
-        }
-        ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
-        valueColor = ta.getColor(R.styleable.ValueSelector_valueColor, Color.BLACK);
+        checkNullSet(set);
+        typedArray = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
+        valueColor = typedArray.getColor(R.styleable.ValueSelector_valueColor, Color.BLACK);
         valueText.setTextColor(valueColor);
-        ta.recycle();
+        typedArray.recycle();
     }
 
     private void setCustomBorderColor(AttributeSet set) {
-        if (set == null) {
-            return;
-        }
-        ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
-        valueColor = ta.getColor(R.styleable.ValueSelector_borderColor, Color.TRANSPARENT);
+        checkNullSet(set);
+        typedArray = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
+        valueColor = typedArray.getColor(R.styleable.ValueSelector_borderColor, Color.TRANSPARENT);
 
-        final int sdk = android.os.Build.VERSION.SDK_INT;
-        if (sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+        final int sdkVersion = android.os.Build.VERSION.SDK_INT;
+        if (sdkVersion < android.os.Build.VERSION_CODES.JELLY_BEAN) {
             parentView.setBackgroundDrawable(gd);
         } else {
             parentView.setBackground(gd);
         }
         gd.setStroke(1, valueColor);
-        ta.recycle();
+        typedArray.recycle();
     }
 
     private void setCustomBorderThickness(AttributeSet set) {
-        if (set == null) {
-            return;
-        }
-        ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
-        borderThickness = ta.getInteger(R.styleable.ValueSelector_borderThickness, 0);
+        checkNullSet(set);
+        typedArray = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
+        borderThickness = typedArray.getInteger(R.styleable.ValueSelector_borderThickness, 0);
         gd.setStroke(borderThickness, valueColor);
-        ta.recycle();
+        typedArray.recycle();
     }
 
     private void setCustomBorderRadius(AttributeSet set) {
-        if (set == null) {
-            return;
-        }
-        ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
-        borderRadius = ta.getInteger(R.styleable.ValueSelector_borderRadius, 0);
+        checkNullSet(set);
+        typedArray = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
+        borderRadius = typedArray.getInteger(R.styleable.ValueSelector_borderRadius, 0);
         gd.setCornerRadius(borderRadius);
-        ta.recycle();
+        typedArray.recycle();
     }
 
 
     private void setCustomPlusColor(AttributeSet set) {
-        if (set == null) {
-            return;
-        }
-        ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
-        plusColor = ta.getColor(R.styleable.ValueSelector_plusBtnColor, Color.BLACK);
-        plusImg.setColorFilter((plusColor));
-        ta.recycle();
+        checkNullSet(set);
+        typedArray = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
+        plusColor = typedArray.getColor(R.styleable.ValueSelector_plusBtnColor, Color.BLACK);
+        plusImg.setColorFilter(plusColor);
+        typedArray.recycle();
     }
 
     private void setCustomMinusColor(AttributeSet set) {
-        if (set == null) {
-            return;
+        checkNullSet(set);
+        typedArray = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
+        minusColor = typedArray.getColor(R.styleable.ValueSelector_minusBtnColor, Color.BLACK);
+        minusImg.setColorFilter(minusColor);
+        typedArray.recycle();
+    }
+
+
+    private void checkInvertIconColor() {
+        if (isIconInvert == 1) {
+            plusImg.setColorFilter(minusColor);
+            minusImg.setColorFilter(plusColor);
+
+        } else if (isIconInvert == 0) {
+            plusImg.setColorFilter(plusColor);
+            minusImg.setColorFilter(minusColor);
         }
-        ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
-        minusColor = ta.getColor(R.styleable.ValueSelector_minusBtnColor, Color.BLACK);
-        minusImg.setColorFilter((minusColor));
-        ta.recycle();
+    }
+
+    private void setActionDownColor(AttributeSet set) {
+        checkNullSet(set);
+        typedArray = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
+        actionDownColor = typedArray.getColor(R.styleable.ValueSelector_actionDownColor, plusColor);
+        typedArray.recycle();
     }
 
     private void setCustomMaxValue(AttributeSet set) {
-        if (set == null) {
-            return;
-        }
-        ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
-        maxValue = ta.getInt(R.styleable.ValueSelector_maxValue, maxValue);
-        ta.recycle();
+        checkNullSet(set);
+        typedArray = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
+        maxValue = typedArray.getInt(R.styleable.ValueSelector_maxValue, maxValue);
+        typedArray.recycle();
     }
 
     private void setCustomMinValue(AttributeSet set) {
-        if (set == null) {
-            return;
-        }
-        ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
-        minValue = ta.getInt(R.styleable.ValueSelector_minValue, minValue);
-        ta.recycle();
+        checkNullSet(set);
+        typedArray = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
+        minValue = typedArray.getInt(R.styleable.ValueSelector_minValue, minValue);
+        typedArray.recycle();
     }
 
-
     private void setStartValue(AttributeSet set) {
-        if (set == null) {
-            return;
-        }
-        ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
+        checkNullSet(set);
+        typedArray = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
         ValueSelectorSavedState ss = new ValueSelectorSavedState(super.onSaveInstanceState());
-        ss.currentValue = ta.getInt(R.styleable.ValueSelector_startValue, 0);
+        ss.currentValue = typedArray.getInt(R.styleable.ValueSelector_startValue, 0);
         valueText.setText(String.valueOf(ss.currentValue));
-        ta.recycle();
+        typedArray.recycle();
     }
 
 
     private void updateInterval(AttributeSet set) {
-        if (set == null) {
-            return;
-        }
-        ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
-        TIME_INTERVAL = ta.getInt(R.styleable.ValueSelector_updateInterval, 100);
-        ta.recycle();
+        checkNullSet(set);
+        typedArray = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
+        intervalTime = typedArray.getInt(R.styleable.ValueSelector_updateInterval, 100);
+        typedArray.recycle();
     }
 
     private void setGapValue(AttributeSet set) {
-        if (set == null) {
-            return;
-        }
-        ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
-        gapValue = ta.getInt(R.styleable.ValueSelector_gapValue, 1);
-        ta.recycle();
+        checkNullSet(set);
+        typedArray = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
+        gapValue = typedArray.getInt(R.styleable.ValueSelector_gapValue, 1);
+        typedArray.recycle();
     }
 
     private void setViewOrientation(AttributeSet set) {
-        if (set == null) {
-            return;
-        }
-        ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
-        viewOrientation = ta.getInt(R.styleable.ValueSelector_valueSelectorOrientation, 0);
+        checkNullSet(set);
+        typedArray = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
+        viewOrientation = typedArray.getInt(R.styleable.ValueSelector_valueSelectorOrientation, 0);
         if (viewOrientation == 0) {
             itemsContainer.setOrientation(HORIZONTAL);
         } else if (viewOrientation == 1) {
             itemsContainer.setOrientation(VERTICAL);
         }
-        ta.recycle();
+        typedArray.recycle();
     }
 
     private void setValueTextSize(AttributeSet set) {
-        if (set == null) {
-            return;
-        }
-        ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
-        valueTextSize = ta.getDimensionPixelSize(R.styleable.ValueSelector_valueTextSize, 20);
+        checkNullSet(set);
+        typedArray = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
+        valueTextSize = typedArray.getDimensionPixelSize(R.styleable.ValueSelector_valueTextSize, 20);
         valueText.setTextSize(valueTextSize);
-        ta.recycle();
+        typedArray.recycle();
     }
 
     private void setIconsSize(AttributeSet set) {
-        if (set == null) {
-            return;
-        }
-        ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
-        plusIconWidthSize = ta.getDimensionPixelSize(R.styleable.ValueSelector_plusIconWidthSize, 45);
-        plusIconHeightSize = ta.getDimensionPixelSize(R.styleable.ValueSelector_plusIconHeightSize, 45);
-        minusIconWidthSize = ta.getDimensionPixelSize(R.styleable.ValueSelector_minusIconWidthSize, 45);
-        minusIconHeightSize = ta.getDimensionPixelSize(R.styleable.ValueSelector_minusIconHeightSize, 45);
-        LayoutParams params = new LayoutParams(plusIconWidthSize, plusIconHeightSize);
-        LayoutParams params2 = new LayoutParams(minusIconWidthSize, minusIconHeightSize);
+        checkNullSet(set);
+        typedArray = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
+        plusIconWidthSize = typedArray.getDimensionPixelSize(R.styleable.ValueSelector_plusIconWidthSize, 45);
+        plusIconHeightSize = typedArray.getDimensionPixelSize(R.styleable.ValueSelector_plusIconHeightSize, 45);
+        minusIconWidthSize = typedArray.getDimensionPixelSize(R.styleable.ValueSelector_minusIconWidthSize, 45);
+        minusIconHeightSize = typedArray.getDimensionPixelSize(R.styleable.ValueSelector_minusIconHeightSize, 45);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(plusIconWidthSize, plusIconHeightSize);
+        LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams(minusIconWidthSize, minusIconHeightSize);
         plusImg.setLayoutParams(params);
         minusImg.setLayoutParams(params2);
-        ta.recycle();
+        typedArray.recycle();
     }
 
 
     private void setFontFamily(AttributeSet set) {
-        if (set == null) {
-            return;
-        }
-        ta = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
-        fontFamily = ta.getInt(R.styleable.ValueSelector_valueSelectorFontFamily, 0);
+        checkNullSet(set);
+        typedArray = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
+        fontFamily = typedArray.getInt(R.styleable.ValueSelector_valueSelectorFontFamily, 0);
         if (fontFamily == 0) {
             valueText.setTypeface(Typeface.MONOSPACE);
         } else if (fontFamily == 1) {
@@ -312,17 +326,15 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         } else if (fontFamily == 2) {
             valueText.setTypeface(Typeface.SANS_SERIF);
         }
-        ta.recycle();
+        typedArray.recycle();
     }
 
     private void setValueSelectorCustomFont(Context ctx, AttributeSet attrs) {
-        if (attrs == null) {
-            return;
-        }
-        ta = ctx.obtainStyledAttributes(attrs, R.styleable.ValueSelector);
-        String customFont = ta.getString(R.styleable.ValueSelector_customFontFamily);
+        checkNullSet(attrs);
+        typedArray = ctx.obtainStyledAttributes(attrs, R.styleable.ValueSelector);
+        String customFont = typedArray.getString(R.styleable.ValueSelector_customFontFamily);
         setCustomFont(ctx, customFont);
-        ta.recycle();
+        typedArray.recycle();
     }
 
     public boolean setCustomFont(Context ctx, String asset) {
@@ -330,12 +342,38 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         try {
             tf = Typeface.createFromAsset(ctx.getAssets(), asset);
         } catch (Exception e) {
-            Log.e("TAG", "Could not get typeface: " + e.getMessage());
+            Log.e(LOG_TAG, "Could not get typeface: " + e.getMessage() + "\n" + "Place your custom fonts in assets folder to access customFontFamily attribute.");
             return false;
         }
         valueText.setTypeface(tf);
         return true;
     }
+
+    /**
+     * ####################################
+     * PUBLIC METHODS
+     * ####################################
+     */
+
+    public int getValue() {
+        String text = valueText.getText().toString();
+        if (text.isEmpty()) {
+            valueText.setText("0");
+            return 0;
+        }
+        return Integer.valueOf(text);
+    }
+
+    public void setValue(int newValue) {
+        if (newValue > maxValue) {
+            valueText.setText(String.valueOf(maxValue));
+        } else if (newValue < minValue) {
+            valueText.setText(String.valueOf(minValue));
+        } else {
+            valueText.setText(String.valueOf(newValue));
+        }
+    }
+
 
     public int getMinValue() {
         return minValue;
@@ -353,70 +391,35 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         this.maxValue = maxValue;
     }
 
-    @SuppressLint("ClickableViewAccessibility")
-    private void init(Context context) {
-        setSaveEnabled(true);
-        rootView = inflate(context, R.layout.value_selector, this);
-        valueText = rootView.findViewById(R.id.value_number);
-        minusImg = rootView.findViewById(R.id.btn_minus);
-        parentView = rootView.findViewById(R.id.parentView);
-        plusImg = rootView.findViewById(R.id.btn_plus);
-        itemsContainer = rootView.findViewById(R.id.itemsContainer);
-        handler = new Handler();
-        plusImg.setOnClickListener(this);
-        minusImg.setOnClickListener(this);
-        plusImg.setOnLongClickListener(this);
-        minusImg.setOnLongClickListener(this);
-        minusImg.setOnTouchListener(this);
-        plusImg.setOnTouchListener(this);
-    }
-
-    public int getValue() {
-
-        String text = valueText.getText().toString();
-        if (text.isEmpty()) {
-            valueText.setText("0");
-            return 0;
-        }
-        return Integer.valueOf(text);
-    }
-
-    @Override
     public int length() {
         return valueText.length();
     }
 
-    @Override
     public void setValueTextColor(int color) {
         valueText.setTextColor(color);
     }
 
-    @Override
     public void setPlusIconColor(int color) {
         plusImg.setColorFilter(color);
     }
 
-    @Override
     public void setMinusIconColor(int color) {
         minusImg.setColorFilter(color);
+
     }
 
-    @Override
     public void setPlusIconResource(int resource) {
         plusImg.setImageResource(resource);
     }
 
-    @Override
     public void setMinusIconResource(int resource) {
         minusImg.setImageResource(resource);
     }
 
-    @Override
     public void setValueTextSize(int unit, float size) {
         valueText.setTextSize(unit, size);
     }
 
-    @Override
     public void setBorderColor(int borderColor, int width) {
         int sdk = android.os.Build.VERSION.SDK_INT;
         if (sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
@@ -427,7 +430,6 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         gd.setStroke(width, borderColor);
     }
 
-    @Override
     public void setBorderRadius(int radius) {
         gd.setCornerRadius(radius);
     }
@@ -440,13 +442,17 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         itemsContainer.setOrientation(orientation);
     }
 
-    public void setValue(int newValue) {
-        if (newValue > maxValue) {
-            valueText.setText(String.valueOf(maxValue));
-        } else if (newValue < minValue) {
-            valueText.setText(String.valueOf(minValue));
-        } else {
-            valueText.setText(String.valueOf(newValue));
+    public void setUpdateInterval(int time) {
+        intervalTime = time;
+    }
+
+    public void initActionDownColor(View view, int color) {
+        this.actionDownColor = color;
+        int id = view.getId();
+        if (id == R.id.btn_plus) {
+            plusImg.setColorFilter(color);
+        } else if (id == R.id.btn_minus) {
+            minusImg.setColorFilter(color);
         }
     }
 
@@ -482,18 +488,30 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         if (motionEvent.getAction() == MotionEvent.ACTION_UP || motionEvent.getAction() == MotionEvent.ACTION_CANCEL) {
             isPlusButtonPressed = false;
             isMinusButtonPressed = false;
+            initActionUpColor(view);
+        } else if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+            initActionDownColor(view, actionDownColor);
         }
         return false;
+    }
+
+    private void initActionUpColor(View view) {
+        int id = view.getId();
+        if (id == R.id.btn_plus) {
+            checkInvertIconColor();
+        } else if (id == R.id.btn_minus) {
+            checkInvertIconColor();
+        }
     }
 
     @Override
     public boolean onLongClick(View view) {
         if (view.getId() == minusImg.getId()) {
             isMinusButtonPressed = true;
-            handler.postDelayed(new AutoDecrementer(), TIME_INTERVAL);
+            handler.postDelayed(new AutoDecrementer(), intervalTime);
         } else if (view.getId() == plusImg.getId()) {
             isPlusButtonPressed = true;
-            handler.postDelayed(new AutoIncrementer(), TIME_INTERVAL);
+            handler.postDelayed(new AutoIncrementer(), intervalTime);
         }
         return false;
     }
@@ -504,7 +522,7 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         public void run() {
             if (isMinusButtonPressed) {
                 decrementValue();
-                handler.postDelayed(this, TIME_INTERVAL);
+                handler.postDelayed(this, intervalTime);
             }
         }
     }
@@ -514,7 +532,7 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         public void run() {
             if (isPlusButtonPressed) {
                 incrementValue();
-                handler.postDelayed(this, TIME_INTERVAL);
+                handler.postDelayed(this, intervalTime);
             }
         }
     }
@@ -561,7 +579,7 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
             out.writeInt(maxValue);
         }
 
-        public static final Creator<ValueSelectorSavedState> CREATOR = new Creator<ValueSelectorSavedState>() {
+        public static final Parcelable.Creator<ValueSelectorSavedState> CREATOR = new Creator<ValueSelectorSavedState>() {
             @Override
             public ValueSelectorSavedState createFromParcel(Parcel parcel) {
                 return new ValueSelectorSavedState(parcel);
@@ -573,4 +591,11 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
             }
         };
     }
+
+    private void checkNullSet(AttributeSet set) {
+        if (set == null) {
+            return;
+        }
+    }
+
 }
