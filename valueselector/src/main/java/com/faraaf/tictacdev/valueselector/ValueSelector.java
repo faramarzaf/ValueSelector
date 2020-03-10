@@ -350,9 +350,9 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
     }
 
     /**
-     * ####################################
+     * ###################################
      * PUBLIC METHODS
-     * ####################################
+     * ###################################
      */
 
     public int getValue() {
