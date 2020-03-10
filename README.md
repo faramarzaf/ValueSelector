@@ -77,17 +77,17 @@ In your XML Layout
 
 |N.o| Attributes | Description |N.o|Attributes|Description|
 |-------------| ------------- | -------------|-------------|-------------|-------------|
-|1|borderColor|The color of layout border|11|plusBtnColor|The color of `+` icon|
-|2|borderRadius|The radius of layout border|12|plusIconHeightSize|The height of `+` icon|
-|3|borderThickness|The thickness of layout border|13|plusIconWidthSize|The width of `+` icon|
-|4|gapValue|The distance between the values|14|startValue|The number that value selector starts work from that|
-|5|invertIconsPlace|The place of `+` & `-` will be change by True/False |15|updateInterval|The time that value changes by long press on plus or minus|
-|6|maxValue|The max value that you can select|16|valueColor|The color of value that you choose|
-|7|minValue|The min value that you can select|17|valueSelectorOrientation|Vertical or horizontal layout orientation|
-|8|minusBtnColor|The color of `-` icon|18|valueTextSize|The text size of value that you select|
-|9|minusIconHeightSize|The height of `-` icon |19|valueSelectorFontFamily|Three default fonts: sans_serif, sans and monospace(Without assets fonts) |
-|10|minusIconWidthSize|The width of `-` icon |20|customFontFamily|The font that you have in `assets` folder|
-|21|iconTypes|Choose between these types `plus_minus` , `arrow` , `expand` , `circle`||||  
+|1|borderColor|The color of layout border|12|plusBtnColor|The color of `+` icon|
+|2|borderRadius|The radius of layout border|13|plusIconHeightSize|The height of `+` icon|
+|3|borderThickness|The thickness of layout border|14|plusIconWidthSize|The width of `+` icon|
+|4|gapValue|The distance between the values|15|startValue|The number that value selector starts work from that|
+|5|invertIconsPlace|The place of `+` & `-` will be change by True/False |16|updateInterval|The time that value changes by long press on plus or minus|
+|6|maxValue|The max value that you can select|17|valueColor|The color of value that you choose|
+|7|minValue|The min value that you can select|18|valueSelectorOrientation|Vertical or horizontal layout orientation|
+|8|minusBtnColor|The color of `-` icon|19|valueTextSize|The text size of value that you select|
+|9|minusIconHeightSize|The height of `-` icon |20|valueSelectorFontFamily|Three default fonts: sans_serif, sans and monospace(Without assets fonts) |
+|10|minusIconWidthSize|The width of `-` icon |21|customFontFamily|The font that you have in `assets` folder|
+|11|iconTypes|Choose between these types `plus_minus` , `arrow` , `expand` , `circle`|22|actionDownColor|The color of ACTION_DOWN state on buttons|  
 
 **Java usage**  
 
