@@ -88,7 +88,7 @@ In your XML Layout
 |10|minusIconWidthSize|The width of `-` icon |20|customFontFamily|The font that you have in `assets` folder|
 |21|iconTypes|Choose between these types `plus_minus` , `arrow` , `expand` , `circle`||||  
 
-Java usage  
+**Java usage**  
 
 ```java
 valueSelector.setCustomFont(this,"your_font.ttf");
