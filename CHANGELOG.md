@@ -1,5 +1,11 @@
 # Change Log 
 
+- v1.0.8 **(March/10/2020)**  
+  - ActionDownColor option added
+  - Bug interval fixed
+  - Bug invertIconsColor fixed. (When you've been selected the invertIcons --> Colors applied the opposite sides)
+
+
 - v1.0.7 **(Feb/20/2020)**  
   - New Java public methods added
   ```java
