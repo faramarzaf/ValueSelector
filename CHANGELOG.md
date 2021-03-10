@@ -1,5 +1,10 @@
 # Change Log 
 
+
+- v1.0.9 **(March/10/2021)**  
+  - ActionDownColor option removed
+  - Gradle updated
+
 - v1.0.8 **(March/10/2020)**  
   - ActionDownColor option added
   - Bug interval fixed
