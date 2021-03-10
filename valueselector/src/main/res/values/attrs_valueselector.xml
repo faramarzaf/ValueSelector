@@ -8,7 +8,6 @@
         <attr name="borderColor" format="color" />
         <attr name="plusBtnColor" format="color" />
         <attr name="minusBtnColor" format="color" />
-        <attr name="actionDownColor" format="color" />
 
         <attr name="minValue" format="integer" />
         <attr name="maxValue" format="integer" />

@@ -1,5 +1,6 @@
 package com.faramarz.tictacdev.mycustomcounter;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +20,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         bind();
-        init();
     }
 
     private void bind() {
@@ -28,9 +28,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         get.setOnClickListener(this);
     }
 
-    private void init() {
-        
-    }
 
 
     @Override

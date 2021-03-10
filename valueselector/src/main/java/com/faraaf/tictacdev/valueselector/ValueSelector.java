@@ -57,7 +57,6 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
     private int fontFamily;
     private int isIconInvert;
     private int intervalTime;
-    private int actionDownColor;
     // for selection icon types
     private int iconTypes;
 
@@ -88,7 +87,6 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         setFontFamily(attrs);
         setValueSelectorCustomFont(context, attrs);
         selectIconTypes(attrs);
-        setActionDownColor(attrs);
         checkInvertIconColor();
     }
 
@@ -112,7 +110,6 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         setFontFamily(attrs);
         setValueSelectorCustomFont(context, attrs);
         selectIconTypes(attrs);
-        setActionDownColor(attrs);
         checkInvertIconColor();
     }
 
@@ -233,13 +230,6 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
             plusImg.setColorFilter(plusColor);
             minusImg.setColorFilter(minusColor);
         }
-    }
-
-    private void setActionDownColor(AttributeSet set) {
-        checkNullSet(set);
-        typedArray = getContext().obtainStyledAttributes(set, R.styleable.ValueSelector);
-        actionDownColor = typedArray.getColor(R.styleable.ValueSelector_actionDownColor, plusColor);
-        typedArray.recycle();
     }
 
     private void setCustomMaxValue(AttributeSet set) {
@@ -446,15 +436,6 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         intervalTime = time;
     }
 
-    public void initActionDownColor(View view, int color) {
-        this.actionDownColor = color;
-        int id = view.getId();
-        if (id == R.id.btn_plus) {
-            plusImg.setColorFilter(color);
-        } else if (id == R.id.btn_minus) {
-            minusImg.setColorFilter(color);
-        }
-    }
 
     @Override
     public void onClick(View view) {
@@ -488,9 +469,6 @@ public class ValueSelector extends LinearLayout implements View.OnClickListener,
         if (motionEvent.getAction() == MotionEvent.ACTION_UP || motionEvent.getAction() == MotionEvent.ACTION_CANCEL) {
             isPlusButtonPressed = false;
             isMinusButtonPressed = false;
-            initActionUpColor(view);
-        } else if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-            initActionDownColor(view, actionDownColor);
         }
         return false;
     }

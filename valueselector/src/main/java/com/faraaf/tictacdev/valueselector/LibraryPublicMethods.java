@@ -45,5 +45,4 @@ public interface LibraryPublicMethods {
 
     void setUpdateInterval(int time);
 
-    void initActionDownColor(View view, int color);
 }
