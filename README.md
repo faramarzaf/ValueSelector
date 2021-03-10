@@ -70,7 +70,6 @@ In your XML Layout
 						      app:valueSelectorFontFamily="sans_serif"
 						      app:customFontFamily="your_font.ttf"
 						      app:iconTypes="circle"
-						      app:actionDownColor="#0CAA0C"
         />
 ```
 
