@@ -86,7 +86,7 @@ In your XML Layout
 |8|minusBtnColor|The color of `-` icon|19|valueTextSize|The text size of value that you select|
 |9|minusIconHeightSize|The height of `-` icon |20|valueSelectorFontFamily|Three default fonts: sans_serif, sans and monospace(Without assets fonts) |
 |10|minusIconWidthSize|The width of `-` icon |21|customFontFamily|The font that you have in `assets` folder|
-|11|iconTypes|Choose between these types `plus_minus` , `arrow` , `expand` , `circle`|22|actionDownColor|The color of ACTION_DOWN state on buttons|  
+|11|iconTypes|Choose between these types `plus_minus` , `arrow` , `expand` , `circle`|22|-|-|  
 
 **Java usage**  
 
